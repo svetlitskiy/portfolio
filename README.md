@@ -1,9 +1,9 @@
-# My Blog, Portfolio, and Resume 🌟
+# My Post, Portfolio, and Resume 🌟
 
 Welcome to my personal project repository!  
 This is the codebase for my website, which brings together three key aspects of my professional journey:
 
-- **Blog**: Articles about programming, technology, and my experiences.
+- **Post**: Articles about programming, technology, and my experiences.
 - **Portfolio**: A showcase of my projects and achievements.
 - **Resume**: All about me — from my skills to my career history.
 
