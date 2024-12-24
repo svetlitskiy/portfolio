@@ -1,7 +1,8 @@
 import {JSX} from 'react';
+import {langList} from '@/conf';
+
 
 export async function generateStaticParams() {
-  const langList = ['en', 'ru', 'pt'];
   return langList.map((lang) => ({
     lang,
   }));
@@ -14,7 +15,7 @@ export default async function BlogPostPage({ params }: {params: Promise<{lang: s
 
   return (
     <div>
-      <div>{ lang }</div>
+      Empty page {lang}
     </div>
 
   );

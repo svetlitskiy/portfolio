@@ -10,6 +10,21 @@ const nextConfig: NextConfig = {
   //   localeDetection: false,
   // }
   /* config options here */
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: [
+        {
+          loader: '@svgr/webpack',
+          options: {
+            icon: true, // Позволяет передавать width и height как props
+          },
+        },
+      ],
+    });
+
+    return config;
+  },
 };
 
 export default nextConfig;
