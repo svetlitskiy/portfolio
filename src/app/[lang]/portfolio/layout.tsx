@@ -8,7 +8,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogLayout({
+export default async function PortfolioLayout({
   children,
   params,
 }: Readonly<{

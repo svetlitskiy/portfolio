@@ -1,6 +1,6 @@
 import { langList } from '@/conf';
 import { ThemeProvider } from '@mui/material';
-import { theme } from '@/theme';
+import themeResume from './theme-resume';
 
 export async function generateStaticParams() {
   return langList.map((lang) => ({
@@ -8,7 +8,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogLayout({
+export default async function ResumeLayout({
   children,
   params,
 }: Readonly<{
@@ -17,5 +17,5 @@ export default async function BlogLayout({
 }>) {
   const { lang } = await params;
   console.log('lang', lang);
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return <ThemeProvider theme={themeResume}>{children}</ThemeProvider>;
 }

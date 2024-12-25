@@ -14,18 +14,20 @@ export async function generateStaticParams() {
 export default async function PortfolioPage({ params }: { params: Promise<{ lang: string }> }): Promise<JSX.Element> {
   const { lang } = await params;
   const t = getI18n(lang);
-  const projects = await api.post.list();
+  const projects = await api.project.list();
   return (
     <div>
       <Typography variant="h1">{t.portfolio.title}</Typography>
       {projects.map((project) => (
-        <div key={project.id}>
+        <article key={project.id}>
+          <Typography variant="h1">{project.title}</Typography>
+          <Typography variant="body1">{project.description}</Typography>
           <div>
             <Link component={NextLink} href={`/${lang}/project/${project.id}`}>
               Project {project.id}
             </Link>
           </div>
-        </div>
+        </article>
       ))}
     </div>
   );

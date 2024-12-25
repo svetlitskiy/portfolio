@@ -3,7 +3,8 @@ import { JSX } from 'react';
 import NextLink from 'next/link';
 import { langList } from '@/conf';
 import { getI18n } from '@/i18n/i18n';
-import { Link, Typography } from '@mui/material';
+import { Alert, Link, Typography, Button } from '@mui/material';
+import './../../globals.css';
 
 export async function generateStaticParams() {
   return langList.map((lang) => ({
@@ -18,6 +19,9 @@ export default async function BlogPage({ params }: { params: Promise<{ lang: str
   return (
     <div>
       <Typography variant="h1">{t.blog.title}</Typography>
+      <Alert color="success">Hello</Alert>
+      <Button variant="outlined">Some button text</Button>
+      <Button variant="contained">Some button text</Button>
       {posts.map((post) => (
         <div key={post.id}>
           <div>{post.id}</div>

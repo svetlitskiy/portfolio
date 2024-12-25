@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { MouseEvent } from 'react';
 
-export const LangSwitcher = ({ params }: { params: { lang: string; path: string } }) => {
+export const LangSwitcher = ({ params }: { params: { lang: string } }) => {
   const pathname = usePathname();
   const router = useRouter();
   const { lang } = params;
