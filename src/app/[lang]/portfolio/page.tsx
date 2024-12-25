@@ -11,19 +11,18 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogPage({ params }: { params: Promise<{ lang: string }> }): Promise<JSX.Element> {
+export default async function PortfolioPage({ params }: { params: Promise<{ lang: string }> }): Promise<JSX.Element> {
   const { lang } = await params;
   const t = getI18n(lang);
-  const posts = await api.post.list();
+  const projects = await api.post.list();
   return (
     <div>
-      <Typography variant="h1">{t.blog.title}</Typography>
-      {posts.map((post) => (
-        <div key={post.id}>
-          <div>{post.id}</div>
+      <Typography variant="h1">{t.portfolio.title}</Typography>
+      {projects.map((project) => (
+        <div key={project.id}>
           <div>
-            <Link component={NextLink} href={`/${lang}/blog/${post.id}`}>
-              {post.title}
+            <Link component={NextLink} href={`/${lang}/project/${project.id}`}>
+              Project {project.id}
             </Link>
           </div>
         </div>

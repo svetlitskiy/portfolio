@@ -10,6 +10,9 @@ export const i18nRu: I18nLocaleInterface = {
   blog: {
     title: 'Блог',
   },
+  portfolio: {
+    title: 'Портфолио',
+  },
   resume: {
     title: 'Резюме',
     position: 'Fullstack/Node.js Разработчик',

@@ -1,6 +1,7 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
+import { MouseEvent } from 'react';
 
 export const LangSwitcher = ({ params }: { params: { lang: string; path: string } }) => {
   const pathname = usePathname();
@@ -9,10 +10,10 @@ export const LangSwitcher = ({ params }: { params: { lang: string; path: string 
   const path = pathname.replace(`/${lang}/`, '');
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
-  const navigate = (e: any, lang: string) => {
+  const navigate = (e: MouseEvent, lang: string) => {
     e.preventDefault();
     router.push(`${basePath}/${lang}/${path}`);
-  }
+  };
 
   return (
     <div className="flex flex-row gap-2">

@@ -10,7 +10,9 @@ export const i18nEn: I18nLocaleInterface = {
   blog: {
     title: 'Blog',
   },
-
+  portfolio: {
+    title: 'Portfolio',
+  },
   resume: {
     title: 'Resume / CV',
     position: 'Fullstack/Node.js Developer',

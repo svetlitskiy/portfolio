@@ -10,6 +10,9 @@ export const i18nPt: I18nLocaleInterface = {
   blog: {
     title: 'Blog',
   },
+  portfolio: {
+    title: 'Portfólio',
+  },
   resume: {
     title: 'Currículo / CV',
     position: 'Fullstack/Node.js Разработчик',

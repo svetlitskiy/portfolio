@@ -8,6 +8,7 @@ export const Navigation = async ({ params }: { params: Promise<{ lang: string }>
     <nav className="flex flex-row gap-3">
       <Link href={`/${lang}`}>{t.home.title}</Link>
       <Link href={`/${lang}/blog`}>{t.blog.title}</Link>
+      <Link href={`/${lang}/portfolio`}>{t.portfolio.title}</Link>
       <Link href={`/${lang}/resume`}>{t.resume.title}</Link>
     </nav>
   );

@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   output: 'export',
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
   publicRuntimeConfig: {
-    basePath: process.env.NEXT_PUBLIC_BASE_PATH || ''
+    basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
   },
   webpack(config) {
     config.module.rules.push({

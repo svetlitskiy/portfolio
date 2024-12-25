@@ -24,6 +24,9 @@ export interface I18nLocaleInterface {
   blog: {
     title: string;
   };
+  portfolio: {
+    title: string;
+  };
   resume: {
     title: string;
     position: string;
