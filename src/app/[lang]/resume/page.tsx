@@ -2,7 +2,7 @@
 import {Footer} from '@/components/footer';
 import {
   Stack,
-  Link as MuiLink,
+  Link,
   Step,
   StepContent,
   StepLabel,
@@ -13,6 +13,7 @@ import {contacts, langList} from '@/conf';
 import {getI18n} from '@/i18n/i18n';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import {I18nResumeExperienceInterface} from '@/i18n/i18n.interface';
+import NextLink from 'next/link';
 
 export async function generateStaticParams() {
   return langList.map((lang) => ({
@@ -39,8 +40,8 @@ export default async function ResumePage({params}: { params: Promise<{ lang: str
 
       <section>
         <Typography variant="h2">Контакты</Typography>
-        <Typography variant="body1"><strong>Email:</strong> <MuiLink href={`mailto:${contacts.email}`}
-                                                                     itemProp="email">{contacts.email}</MuiLink></Typography>
+        <Typography variant="body1"><strong>Email:</strong> <Link component={NextLink} href={`mailto:${contacts.email}`}
+                                                                     itemProp="email">{contacts.email}</Link></Typography>
         <Typography variant="body1">
                 <span itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
                   <span itemProp="addressLocality">Florianópolis</span>, <span itemProp="addressRegion">SC</span>, <span
@@ -68,7 +69,7 @@ export default async function ResumePage({params}: { params: Promise<{ lang: str
                 <Stack direction="row" spacing={1} alignItems="center" justifyContent="space-between"
                        className="truncate">
                   <Typography variant="h3" itemProp="name">{place.companyName}</Typography>
-                  <MuiLink>{place.link}</MuiLink>
+                  <Link component={NextLink}>{place.link}</Link>
                 </Stack>
 
                 <Stack direction="row" spacing={2} justifyContent="space-between">
@@ -91,7 +92,7 @@ export default async function ResumePage({params}: { params: Promise<{ lang: str
                     {place?.projects?.map((project, index) => (<li key={`p_${index}`} className="p-1">
                       <article itemProp="worksFor" itemScope itemType="https://schema.org/CreativeWork">
                         <Typography variant="h5" itemProp="name">{project.title}</Typography> {project?.link &&
-                          <MuiLink href={project.link}>{project.link}</MuiLink>}
+                          <Link component={NextLink} href={project.link}>{project.link}</Link>}
                       </article>
                       <Typography variant="body2" itemProp="description">{project.description}</Typography>
                     </li>))}
