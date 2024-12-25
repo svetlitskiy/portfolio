@@ -14,14 +14,14 @@ export default async function LangLayout({
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ lang: string }>;
+  params: Promise<{ lang: string; url: URL }>;
 }>) {
   const { lang } = await params;
   return (
     <div>
       <header className="flex flex-row items-center justify-between px-2 py-1">
         <Navigation params={{ lang }} />
-        <LangSwitcher params={{ lang }} />
+        <LangSwitcher params={{ lang, path: '/' }} />
       </header>
       <main>{children}</main>
 

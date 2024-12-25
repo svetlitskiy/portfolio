@@ -78,7 +78,11 @@ export default async function ResumePage({ params }: { params: Promise<{ lang: s
                     <Typography variant="h3" itemProp="name">
                       {place.companyName}
                     </Typography>
-                    <Link component={NextLink}>{place.link}</Link>
+                    {place.link && (
+                      <Link href={place.link} component={NextLink}>
+                        {place.link}
+                      </Link>
+                    )}
                   </Stack>
 
                   <Stack direction="row" spacing={2} justifyContent="space-between">

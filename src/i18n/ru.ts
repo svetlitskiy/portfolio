@@ -4,10 +4,14 @@ export const i18nRu: I18nLocaleInterface = {
   main: {
     name: 'Светлицкий Алексей',
   },
+  home: {
+    title: 'Главная',
+  },
   blog: {
     title: 'Блог',
   },
   resume: {
+    title: 'Резюме',
     position: 'Fullstack/Node.js Разработчик',
     projects: 'Проекты',
     summary: {

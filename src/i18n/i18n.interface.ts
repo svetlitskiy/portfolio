@@ -18,10 +18,14 @@ export interface I18nLocaleInterface {
   main: {
     name: string;
   };
+  home: {
+    title: string;
+  };
   blog: {
     title: string;
   };
   resume: {
+    title: string;
     position: string;
     projects: string;
     education?: {

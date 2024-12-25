@@ -1,25 +1,27 @@
-// "use client";
+'use client';
 
-import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-export const LangSwitcher = async ({ params }: { params: Promise<{ lang: string }> | { lang: string } }) => {
-  const { lang } = await params;
+export const LangSwitcher = ({ params }: { params: { lang: string; path: string } }) => {
+  const pathname = usePathname();
+  const { lang } = params;
+  const path = pathname.replace(`/${lang}/`, '');
   return (
     <div className="flex flex-row gap-2">
       {lang !== 'pt' && (
-        <Link className="text-2xl" href="/pt/">
+        <a className="text-2xl" href={`/pt/${path}`}>
           🇧🇷
-        </Link>
+        </a>
       )}
       {lang !== 'en' && (
-        <Link className="text-2xl" href="/en/">
+        <a className="text-2xl" href={`/en/${path}`}>
           🇬🇧
-        </Link>
+        </a>
       )}
       {lang !== 'ru' && (
-        <Link className="text-2xl" href="/ru/">
+        <a className="text-2xl" href={`/ru/${path}`}>
           🇷🇺
-        </Link>
+        </a>
       )}
     </div>
   );
