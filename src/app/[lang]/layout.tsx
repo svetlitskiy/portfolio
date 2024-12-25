@@ -1,7 +1,7 @@
 import "./../globals.css";
 import {Navigation} from '@/components/navigation';
-import Link from 'next/link';
 import {langList} from '@/conf';
+import {LangSwitcher} from '@/components/lang-switcher';
 
 
 export async function generateStaticParams() {
@@ -23,11 +23,7 @@ export default async function LangLayout({
     <div>
       <header className="flex flex-row items-center justify-between px-2 py-1">
         <Navigation params={{ lang }}/>
-        <div className="flex flex-row gap-2">
-          <Link className="text-2xl" href="/pt/resume">🇧🇷</Link>
-          <Link className="text-2xl" href="/en/resume">🇬🇧</Link>
-          <Link className="text-2xl" href="/ru/resume">🇷🇺</Link>
-        </div>
+        <LangSwitcher params={{ lang }} />
       </header>
       <main>
         {children}

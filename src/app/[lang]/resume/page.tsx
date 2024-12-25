@@ -29,6 +29,12 @@ export default async function ResumePage({params}: { params: Promise<{ lang: str
       <header className="mb-8 text-center">
         <Typography variant="h1" itemProp="name">{t.main.name}</Typography>
         <Typography variant="body1" itemProp="jobTitle">Fullstack/Node.js Developer</Typography>
+        <img
+          src={`${contacts.github.avatar}?s=200`}
+          alt={t.main.name}
+          width={200}
+          height={200}
+        />
       </header>
 
       <section>
