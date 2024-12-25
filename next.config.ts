@@ -1,8 +1,8 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   trailingSlash: true,
-  distDir: "dist",
+  distDir: 'dist',
   output: 'export',
   // i18n: {
   //   locales: ['en', 'pt', 'ru'],

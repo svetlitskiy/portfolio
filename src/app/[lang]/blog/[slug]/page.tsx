@@ -1,5 +1,5 @@
-import {JSX} from 'react';
-import {api} from '@/api/api';
+import { JSX } from 'react';
+import { api } from '@/api/api';
 
 export async function generateStaticParams() {
   const pages = await api.post.list();
@@ -8,9 +8,7 @@ export async function generateStaticParams() {
   }));
 }
 
-
-
-export default async function BlogPostPage({ params }: {params: Promise<{slug: string}>}): Promise<JSX.Element> {
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }): Promise<JSX.Element> {
   const { slug } = await params;
   const post = await api.post.get(slug);
   return (
@@ -19,6 +17,5 @@ export default async function BlogPostPage({ params }: {params: Promise<{slug: s
       <div>{post.title}</div>
       <div>{post.description}</div>
     </div>
-
   );
 }

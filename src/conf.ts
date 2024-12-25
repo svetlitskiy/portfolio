@@ -6,6 +6,6 @@ export const contacts = {
   linkedin: 'https://www.linkedin.com/in/a-svetlitskiy/',
   github: {
     page: 'https://github.com/svetlitskiy',
-    avatar: 'https://avatars.githubusercontent.com/u/14110674'
+    avatar: 'https://avatars.githubusercontent.com/u/14110674',
   },
 };

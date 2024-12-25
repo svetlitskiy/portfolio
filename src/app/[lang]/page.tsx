@@ -1,6 +1,5 @@
-import {JSX} from 'react';
-import {langList} from '@/conf';
-
+import { JSX } from 'react';
+import { langList } from '@/conf';
 
 export async function generateStaticParams() {
   return langList.map((lang) => ({
@@ -8,15 +7,8 @@ export async function generateStaticParams() {
   }));
 }
 
-
-
-export default async function BlogPostPage({ params }: {params: Promise<{lang: string}>}): Promise<JSX.Element> {
+export default async function BlogPostPage({ params }: { params: Promise<{ lang: string }> }): Promise<JSX.Element> {
   const { lang } = await params;
 
-  return (
-    <div>
-      Empty page {lang}
-    </div>
-
-  );
+  return <div>Empty page {lang}</div>;
 }

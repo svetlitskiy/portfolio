@@ -1,14 +1,14 @@
-import {I18nLocaleInterface} from '@/i18n/i18n.interface';
+import { I18nLocaleInterface } from '@/i18n/i18n.interface';
 
 export const i18nPt: I18nLocaleInterface = {
   main: {
-    name: 'Aleksei Svetlitskii'
+    name: 'Aleksei Svetlitskii',
   },
   blog: {
-    title: 'Blog'
+    title: 'Blog',
   },
   resume: {
     position: 'Fullstack/Node.js Разработчик',
     projects: 'Проекты',
-  }
-}
+  },
+};
