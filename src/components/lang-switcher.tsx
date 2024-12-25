@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-export const LangSwitcher = async ({params}: { params: Promise<{ lang: string }> }) => {
+export const LangSwitcher = async ({params}: { params: Promise<{ lang: string }> | { lang: string } }) => {
   const {lang} = await params;
   return (
     <div className="flex flex-row gap-2">

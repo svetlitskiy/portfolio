@@ -12,18 +12,18 @@ export async function generateStaticParams() {
 
 
 export default async function LangLayout({
-                                     children,
-  params
-                                   }: Readonly<{
+                                           children,
+                                           params
+                                         }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{lang: string}>;
+  params: Promise<{ lang: string }>;
 }>) {
-  const { lang } = await params;
+  const {lang} = await params;
   return (
     <div>
       <header className="flex flex-row items-center justify-between px-2 py-1">
-        <Navigation params={{ lang }}/>
-        <LangSwitcher params={{ lang }} />
+        <Navigation params={{lang}}/>
+        <LangSwitcher params={{lang}}/>
       </header>
       <main>
         {children}

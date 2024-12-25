@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import {getI18n} from '@/i18n/i18n';
 
-export const Navigation = async ({params}: { params: Promise<{ lang: string }> }) => {
+export const Navigation = async ({params}: { params: Promise<{ lang: string }> | { lang: string } }) => {
   const {lang} = await params;
   const t = getI18n(lang);
   return (

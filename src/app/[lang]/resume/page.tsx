@@ -74,10 +74,10 @@ export default async function ResumePage({params}: { params: Promise<{ lang: str
                 <Stack direction="row" spacing={2} justifyContent="space-between">
                   <Typography variant="body1" itemProp="jobTitle">{place.position}</Typography>
                   <Stack direction="row" spacing={1}>
-                    <Typography variant="body2" itemProp="startDate"
+                    <Typography component="time" variant="body1" itemProp="startDate"
                                 dateTime={place?.period?.start.toISOString().substring(0, 7)}>{place?.period?.start.toLocaleDateString(lang)}</Typography>
-                    <Typography variant="body2">—</Typography>
-                    <Typography variant="body2" itemProp="endDate"
+                    <Typography variant="body1">—</Typography>
+                    <Typography component="time" variant="body1" itemProp="endDate"
                                 dateTime={place?.period?.end.toISOString().substring(0, 7)}>{place?.period?.end.toLocaleDateString(lang)}</Typography>
                   </Stack>
 
@@ -85,7 +85,7 @@ export default async function ResumePage({params}: { params: Promise<{ lang: str
 
               </StepLabel>
               <StepContent>
-                {place?.projects?.length > 0 && (<div>
+                {place.projects && place.projects.length > 0 && (<div>
                   <Typography variant="h4">{t.resume.projects}</Typography>
                   <ul>
                     {place?.projects?.map((project, index) => (<li key={`p_${index}`} className="p-1">
