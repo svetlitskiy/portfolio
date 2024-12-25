@@ -12,6 +12,9 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+env:
+  NEXT_PUBLIC_BASE_PATH: /portfolio
+
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
@@ -53,8 +56,8 @@ jobs:
         with:
           node-version: '20'
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - name: Setup Pages
-        run: export NEXT_PUBLIC_BASE_PATH=/portfolio
+#      - name: Setup Pages
+#        run: export NEXT_PUBLIC_BASE_PATH=/portfolio
 #      - name: Setup Pages
 #        uses: actions/configure-pages@v5
 #        with:
