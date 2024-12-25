@@ -6,6 +6,9 @@ export const LangSwitcher = ({ params }: { params: { lang: string; path: string 
   const pathname = usePathname();
   const { lang } = params;
   const path = pathname.replace(`/${lang}/`, '');
+
+  console.log('pathname', pathname)
+  console.log('path', path)
   return (
     <div className="flex flex-row gap-2">
       {lang !== 'pt' && (
