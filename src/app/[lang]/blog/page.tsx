@@ -1,9 +1,9 @@
 import { api } from '@/api/api';
 import { JSX } from 'react';
-import Link from 'next/link';
+import NextLink from 'next/link';
 import { langList } from '@/conf';
 import { getI18n } from '@/i18n/i18n';
-import { Typography } from '@mui/material';
+import { Link, Typography } from '@mui/material';
 
 export async function generateStaticParams() {
   return langList.map((lang) => ({
@@ -22,7 +22,7 @@ export default async function BlogPage({ params }: { params: Promise<{ lang: str
         <div key={post.id}>
           <div>{post.id}</div>
           <div>
-            <Link href={`/src/app/%5Blang%5D/blog/${post.id}`}>{post.title}</Link>
+            <Link component={NextLink} href={`/${lang}/blog/${post.id}`}>{post.title}</Link>
           </div>
         </div>
       ))}
