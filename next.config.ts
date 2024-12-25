@@ -1,18 +1,15 @@
 import type { NextConfig } from 'next';
 
+console.log('NEXT_PUBLIC_BASE_PATH:', process.env.NEXT_PUBLIC_BASE_PATH);
+
 const nextConfig: NextConfig = {
   trailingSlash: true,
   distDir: 'dist',
   output: 'export',
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
   publicRuntimeConfig: {
-    basePath: '/portfolio',
+    basePath: process.env.NEXT_PUBLIC_BASE_PATH || ''
   },
-  // i18n: {
-  //   locales: ['en', 'pt', 'ru'],
-  //   defaultLocale: 'en',
-  //   localeDetection: false,
-  // }
-  /* config options here */
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -20,7 +17,7 @@ const nextConfig: NextConfig = {
         {
           loader: '@svgr/webpack',
           options: {
-            icon: true, // Позволяет передавать width и height как props
+            icon: true,
           },
         },
       ],
