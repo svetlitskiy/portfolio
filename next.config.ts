@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   distDir: 'dist',
   output: 'export',
+  publicRuntimeConfig: {
+    basePath: '/portfolio',
+  },
   // i18n: {
   //   locales: ['en', 'pt', 'ru'],
   //   defaultLocale: 'en',
