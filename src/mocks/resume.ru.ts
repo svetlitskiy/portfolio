@@ -27,7 +27,7 @@ export const resumeRu: ResumeInterface = {
     ],
   },
   education: {
-    items: []
+    items: [],
   },
   experience: {
     items: [
