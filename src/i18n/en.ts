@@ -15,7 +15,17 @@ export const i18nEn: I18nLocaleInterface = {
   },
   resume: {
     title: 'Resume / CV',
-    position: 'Fullstack/Node.js Developer',
-    projects: 'Projects',
+    projects: {
+      title: 'Projects',
+    },
+    summary: {
+      title: 'Summary',
+    },
+    education: {
+      title: 'Education',
+    },
+    experience: {
+      title: 'Work Experience',
+    },
   },
 };

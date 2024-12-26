@@ -3,6 +3,7 @@ import { Navigation } from '@/components/navigation';
 import { langList } from '@/conf';
 import { LangSwitcher } from '@/components/lang-switcher';
 import { ThemeToggle } from '@/client/components/theme-toggle';
+import { Footer } from '@/components/footer';
 
 export async function generateStaticParams() {
   return langList.map((lang) => ({
@@ -20,14 +21,16 @@ export default async function LangLayout({
   const { lang } = await params;
   return (
     <div>
-      <header className="flex flex-row items-center justify-between px-2 py-1 bg-background text-primary">
+      <header className="flex flex-col md:flex-row items-center justify-between px-2 py-1 bg-background text-primary print:hidden">
         <Navigation params={{ lang }} />
         <ThemeToggle params={{ lang }} />
         <LangSwitcher params={{ lang }} />
       </header>
-      <main>{children}</main>
+      <main className="flex flex-col">{children}</main>
 
-      <footer></footer>
+      <footer className="print:hidden  p-4">
+        <Footer lang={lang} />
+      </footer>
     </div>
   );
 }

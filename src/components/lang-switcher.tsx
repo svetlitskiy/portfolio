@@ -12,7 +12,8 @@ export const LangSwitcher = ({ params }: { params: { lang: string } }) => {
 
   const navigate = (e: MouseEvent, lang: string) => {
     e.preventDefault();
-    router.push(`/${basePath}/${lang}/${path}`);
+    const url = `/${basePath}/${lang}/${path}`.replaceAll('//', '/');
+    router.push(url);
   };
 
   return (

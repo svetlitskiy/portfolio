@@ -16,7 +16,7 @@ export const ThemeToggleComponent = ({ params }: { params: { lang: string } }) =
   };
 
   return (
-    <div className="flex flex-row gap-2">
+    <div className="flex flex-row gap-2 hidden">
       {settingsStore.theme}
       <Button color="primary" variant="contained" onClick={() => toggleTheme(true)}>
         Dark

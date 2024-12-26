@@ -15,7 +15,17 @@ export const i18nPt: I18nLocaleInterface = {
   },
   resume: {
     title: 'Currículo / CV',
-    position: 'Fullstack/Node.js Разработчик',
-    projects: 'Проекты',
+    projects: {
+      title: 'Projetos',
+    },
+    summary: {
+      title: 'Informações Gerais',
+    },
+    education: {
+      title: 'Educação',
+    },
+    experience: {
+      title: 'Experiência Profissional',
+    },
   },
 };

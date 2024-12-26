@@ -1,6 +1,7 @@
 import { langList } from '@/conf';
 import { ThemeProvider } from '@mui/material';
 import themeResume from './theme-resume';
+import 'typeface-ubuntu-mono';
 
 export async function generateStaticParams() {
   return langList.map((lang) => ({

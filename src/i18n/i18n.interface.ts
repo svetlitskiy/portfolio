@@ -1,19 +1,3 @@
-interface I18nResumeProjectInterface {
-  title: string;
-  link?: string;
-  description: string;
-}
-
-export interface I18nResumeExperienceInterface {
-  companyName: string;
-  link?: string;
-  position: string;
-  period: { start: Date; end: Date };
-  responsibilities?: string[];
-  achievements?: string[];
-  projects?: I18nResumeProjectInterface[];
-}
-
 export interface I18nLocaleInterface {
   main: {
     name: string;
@@ -29,18 +13,17 @@ export interface I18nLocaleInterface {
   };
   resume: {
     title: string;
-    position: string;
-    projects: string;
-    education?: {
+    projects: {
       title: string;
     };
-    summary?: {
+    education: {
       title: string;
-      text: string[];
     };
-    experience?: {
+    summary: {
       title: string;
-      items: I18nResumeExperienceInterface[];
+    };
+    experience: {
+      title: string;
     };
   };
 }

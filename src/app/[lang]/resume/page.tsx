@@ -1,10 +1,11 @@
-import { Footer } from '@/components/footer';
-import { Stack, Link, Step, StepContent, StepLabel, Stepper, Typography } from '@mui/material';
+import { Stack, Link, Typography } from '@mui/material';
 import { contacts, langList } from '@/conf';
 import { getI18n } from '@/i18n/i18n';
-import LocationCityIcon from '@mui/icons-material/LocationCity';
-import { I18nResumeExperienceInterface } from '@/i18n/i18n.interface';
+
 import NextLink from 'next/link';
+import { api } from '@/api/api';
+import { ResumeProjectInterface, ResumeWorkPlaceInterface } from '@/interfaces/resume.interface';
+import { ToggleButton } from '@/client/components/toggle.button';
 
 export async function generateStaticParams() {
   return langList.map((lang) => ({
@@ -15,19 +16,44 @@ export async function generateStaticParams() {
 export default async function ResumePage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   const t = getI18n(lang);
+  const resume = await api.resume.get(lang);
+
   return (
-    <article itemScope itemType="https://schema.org/Person" className="container mx-auto max-w-4xl px-4">
-      <header className="mb-8 text-center">
-        <Typography variant="h1" itemProp="name">
-          {t.main.name}
-        </Typography>
-        <Typography variant="body1" itemProp="jobTitle">
-          Fullstack/Node.js Developer
-        </Typography>
-        <img src={`${contacts.github.avatar}?s=200`} alt={t.main.name} width={200} height={200} />
+    <article
+      itemScope
+      itemType="https://schema.org/Person"
+      className="xl:max-w-[1280px] mx-auto p-4 gap-6 flex flex-col w-full"
+    >
+      <header className="pb-16 md:pb-8 flex flex-col md:flex-row-reverse md:justify-between items-center gap-2">
+        <div>
+          <img
+            src={`${contacts.github.avatar}?s=200`}
+            alt={t.main.name}
+            width={200}
+            height={200}
+            className="rounded-full md:rounded"
+          />
+        </div>
+        <div>
+          <Typography
+            variant="h1"
+            itemProp="name"
+            className="md:whitespace-pre-wrap md:!break-spaces md:w-10 uppercase text-center"
+          >
+            {t.main.name}
+          </Typography>
+          <Typography
+            variant="h3"
+            component={'p'}
+            itemProp="jobTitle"
+            className="uppercase bg-background text-primary invert absolute left-0 py-2 pr-4 pl-4 xl:pl-[clamp(16px,calc(8px+(100vw-1280px)/2),100vw)]"
+          >
+            Fullstack/Node.js Developer
+          </Typography>
+        </div>
       </header>
 
-      <section>
+      <section className="hidden">
         <Typography variant="h2">Контакты</Typography>
         <Typography variant="body1">
           <strong>Email:</strong>{' '}
@@ -43,10 +69,10 @@ export default async function ResumePage({ params }: { params: Promise<{ lang: s
         </Typography>
       </section>
 
-      {t.resume.summary && (
-        <section>
+      {resume.summary && (
+        <section className="hidden">
           <Typography variant="h2">{t.resume.summary.title}</Typography>
-          {t.resume.summary?.text?.map((text, i) => (
+          {resume.summary?.text?.map((text, i) => (
             <Typography variant="body1" itemProp="description" key={`summary-text-${i}`}>
               {text}
             </Typography>
@@ -54,95 +80,100 @@ export default async function ResumePage({ params }: { params: Promise<{ lang: s
         </section>
       )}
 
-      {t.resume.experience && (
-        <section>
+      {resume?.experience && (
+        <section className="flex flex-col">
           <Typography variant="h2">{t.resume.experience.title}</Typography>
-          <Stepper orientation="vertical">
-            {t.resume.experience.items.map((place: I18nResumeExperienceInterface, index) => (
-              <Step
-                active={false}
+          <div className="flex flex-col">
+            {resume.experience.items.map((place: ResumeWorkPlaceInterface, index) => (
+              <div
                 key={`exp-${index}`}
-                expanded={true}
                 itemProp="workExperience"
                 itemScope
                 itemType="https://schema.org/Organization"
+                className="flex flex-row "
               >
-                <StepLabel icon={<LocationCityIcon />}>
-                  <Stack
-                    direction="row"
-                    spacing={1}
-                    alignItems="center"
-                    justifyContent="space-between"
-                    className="truncate"
-                  >
-                    <Typography variant="h3" itemProp="name">
-                      {place.companyName}
-                    </Typography>
-                    {place.link && (
-                      <Link href={place.link} component={NextLink}>
-                        {place.link}
-                      </Link>
-                    )}
-                  </Stack>
+                <div className="flex flex-col">
+                  <ToggleButton params={{ lang, htmlElementId: `exp-detail-${index}` }} />
+                  <div className="flex-1 flex flex-row divide-x divide-gray-500">
+                    <div className="flex-auto"></div>
+                    <div className="flex-auto"></div>
+                  </div>
+                </div>
 
-                  <Stack direction="row" spacing={2} justifyContent="space-between">
-                    <Typography variant="body1" itemProp="jobTitle">
-                      {place.position}
-                    </Typography>
-                    <Stack direction="row" spacing={1}>
-                      <Typography
-                        component="time"
-                        variant="body1"
-                        itemProp="startDate"
-                        dateTime={place?.period?.start.toISOString().substring(0, 7)}
-                      >
-                        {place?.period?.start.toLocaleDateString(lang)}
+                <div className="flex flex-col gap-3 flex-auto">
+                  <div className="flex flex-col">
+                    <div className="flex flex-col md:flex-row justify-between">
+                      <Typography variant="h3" itemProp="name">
+                        {place.companyName}
                       </Typography>
-                      <Typography variant="body1">—</Typography>
-                      <Typography
-                        component="time"
-                        variant="body1"
-                        itemProp="endDate"
-                        dateTime={place?.period?.end.toISOString().substring(0, 7)}
-                      >
-                        {place?.period?.end.toLocaleDateString(lang)}
-                      </Typography>
-                    </Stack>
-                  </Stack>
-                </StepLabel>
-                <StepContent>
-                  {place.projects && place.projects.length > 0 && (
-                    <div>
-                      <Typography variant="h4">{t.resume.projects}</Typography>
-                      <ul>
-                        {place?.projects?.map((project, index) => (
-                          <li key={`p_${index}`} className="p-1">
-                            <article itemProp="worksFor" itemScope itemType="https://schema.org/CreativeWork">
-                              <Typography variant="h5" itemProp="name">
-                                {project.title}
-                              </Typography>{' '}
-                              {project?.link && (
-                                <Link component={NextLink} href={project.link}>
-                                  {project.link}
-                                </Link>
-                              )}
-                            </article>
-                            <Typography variant="body2" itemProp="description">
-                              {project.description}
-                            </Typography>
-                          </li>
-                        ))}
-                      </ul>
+                      {place.link && (
+                        <Link href={place.link} component={NextLink}>
+                          {place.link}
+                        </Link>
+                      )}
                     </div>
-                  )}
-                </StepContent>
-              </Step>
+
+                    <div className="flex flex-col md:flex-row justify-between">
+                      <Typography variant="body1" itemProp="jobTitle">
+                        {place.position}
+                      </Typography>
+                      <Stack direction="row" spacing={1}>
+                        <Typography
+                          component="time"
+                          variant="body1"
+                          itemProp="startDate"
+                          dateTime={place?.period?.start.toISOString().substring(0, 7)}
+                        >
+                          {place?.period?.start.toLocaleDateString(lang)}
+                        </Typography>
+                        <Typography variant="body1">—</Typography>
+                        <Typography
+                          component="time"
+                          variant="body1"
+                          itemProp="endDate"
+                          dateTime={place?.period?.end.toISOString().substring(0, 7)}
+                        >
+                          {place?.period?.end.toLocaleDateString(lang)}
+                        </Typography>
+                      </Stack>
+                    </div>
+                  </div>
+
+                  <div id={`exp-detail-${index}`} className="">
+                    <div></div>
+                    {place.projects && place.projects.length > 0 && (
+                      <div>
+                        <Typography variant="h4">{t.resume.projects.title}</Typography>
+                        <ul>
+                          {place?.projects?.map((project: ResumeProjectInterface, index: number) => (
+                            <li key={`p_${index}`} className="p-1">
+                              <article itemProp="worksFor" itemScope itemType="https://schema.org/CreativeWork">
+                                <Typography variant="h5" itemProp="name">
+                                  {project.title}
+                                </Typography>{' '}
+                                {project?.link && (
+                                  <Link component={NextLink} href={project.link}>
+                                    {project.link}
+                                  </Link>
+                                )}
+                              </article>
+                              <Typography variant="body2" itemProp="description">
+                                {project.description}
+                              </Typography>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
             ))}
-          </Stepper>
+          </div>
         </section>
       )}
 
-      {t.resume.education && (
+      {resume?.education && (
         <section className="mb-8">
           <Typography variant="h4">{t.resume.education.title}</Typography>
           <ul className="list-disc pl-6">
@@ -155,8 +186,6 @@ export default async function ResumePage({ params }: { params: Promise<{ lang: s
           </ul>
         </section>
       )}
-
-      <Footer lang={lang} />
     </article>
   );
 }
