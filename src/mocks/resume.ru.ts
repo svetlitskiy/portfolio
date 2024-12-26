@@ -26,7 +26,9 @@ export const resumeRu: ResumeInterface = {
         'роста.',
     ],
   },
-  education: {},
+  education: {
+    items: []
+  },
   experience: {
     items: [
       {

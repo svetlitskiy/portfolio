@@ -16,6 +16,5 @@ export default async function BlogLayout({
   params: Promise<{ lang: string; url: URL }>;
 }>) {
   const { lang } = await params;
-  console.log('lang', lang);
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }
