@@ -14,13 +14,21 @@ export interface ResumeWorkPlaceInterface {
   projects?: ResumeProjectInterface[];
 }
 
+export interface ResumeEducationPlaceInterface {
+  organization: string;
+  link?: string;
+  program: string;
+  period: { start: Date; end: Date };
+  description: string[];
+}
+
 export interface ResumeInterface {
   name: string;
 
   position: string;
   projects: string;
   education?: {
-    items: string[];
+    items: ResumeEducationPlaceInterface[];
   };
   summary?: {
     text: string[];

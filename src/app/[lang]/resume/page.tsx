@@ -1,11 +1,12 @@
-import { Stack, Link, Typography } from '@mui/material';
+import { Link, Typography } from '@mui/material';
 import { contacts, langList } from '@/conf';
 import { getI18n } from '@/i18n/i18n';
 
 import NextLink from 'next/link';
 import { api } from '@/api/api';
-import { ResumeProjectInterface, ResumeWorkPlaceInterface } from '@/interfaces/resume.interface';
-import { ToggleButton } from '@/client/components/toggle.button';
+import { ResumeEducationPlaceInterface, ResumeWorkPlaceInterface } from '@/interfaces/resume.interface';
+import ExperiencePlaceComponent from '@/app/[lang]/resume/components/experience-place.component';
+import EducationPlaceComponent from '@/app/[lang]/resume/components/education-place.component';
 
 export async function generateStaticParams() {
   return langList.map((lang) => ({
@@ -19,7 +20,7 @@ export default async function ResumePage({ params }: { params: Promise<{ lang: s
   const resume = await api.resume.get(lang);
 
   return (
-    <article
+    <section
       itemScope
       itemType="https://schema.org/Person"
       className="xl:max-w-[1280px] mx-auto p-4 gap-6 flex flex-col w-full"
@@ -84,91 +85,17 @@ export default async function ResumePage({ params }: { params: Promise<{ lang: s
         <section className="flex flex-col">
           <Typography variant="h2">{t.resume.experience.title}</Typography>
           <div className="flex flex-col">
-            {resume.experience.items.map((place: ResumeWorkPlaceInterface, index) => (
-              <div
-                key={`exp-${index}`}
-                itemProp="workExperience"
-                itemScope
-                itemType="https://schema.org/Organization"
-                className="flex flex-row "
-              >
-                <div className="flex flex-col">
-                  <ToggleButton params={{ lang, htmlElementId: `exp-detail-${index}` }} />
-                  <div className="flex-1 flex flex-row divide-x divide-gray-500">
-                    <div className="flex-auto"></div>
-                    <div className="flex-auto"></div>
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-3 flex-auto">
-                  <div className="flex flex-col">
-                    <div className="flex flex-col md:flex-row justify-between">
-                      <Typography variant="h3" itemProp="name">
-                        {place.companyName}
-                      </Typography>
-                      {place.link && (
-                        <Link href={place.link} component={NextLink}>
-                          {place.link}
-                        </Link>
-                      )}
-                    </div>
-
-                    <div className="flex flex-col md:flex-row justify-between">
-                      <Typography variant="body1" itemProp="jobTitle">
-                        {place.position}
-                      </Typography>
-                      <Stack direction="row" spacing={1}>
-                        <Typography
-                          component="time"
-                          variant="body1"
-                          itemProp="startDate"
-                          dateTime={place?.period?.start.toISOString().substring(0, 7)}
-                        >
-                          {place?.period?.start.toLocaleDateString(lang)}
-                        </Typography>
-                        <Typography variant="body1">—</Typography>
-                        <Typography
-                          component="time"
-                          variant="body1"
-                          itemProp="endDate"
-                          dateTime={place?.period?.end.toISOString().substring(0, 7)}
-                        >
-                          {place?.period?.end.toLocaleDateString(lang)}
-                        </Typography>
-                      </Stack>
-                    </div>
-                  </div>
-
-                  <div id={`exp-detail-${index}`} className="">
-                    <div></div>
-                    {place.projects && place.projects.length > 0 && (
-                      <div>
-                        <Typography variant="h4">{t.resume.projects.title}</Typography>
-                        <ul>
-                          {place?.projects?.map((project: ResumeProjectInterface, index: number) => (
-                            <li key={`p_${index}`} className="p-1">
-                              <article itemProp="worksFor" itemScope itemType="https://schema.org/CreativeWork">
-                                <Typography variant="h5" itemProp="name">
-                                  {project.title}
-                                </Typography>{' '}
-                                {project?.link && (
-                                  <Link component={NextLink} href={project.link}>
-                                    {project.link}
-                                  </Link>
-                                )}
-                              </article>
-                              <Typography variant="body2" itemProp="description">
-                                {project.description}
-                              </Typography>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
+            {resume.experience.items.map((place: ResumeWorkPlaceInterface, index) => {
+              const hideCompanyName = resume?.experience?.items[index - 1]?.companyName === place.companyName;
+              return (
+                <ExperiencePlaceComponent
+                  key={`experience-place-${index}`}
+                  lang={lang}
+                  place={place}
+                  hideCompany={hideCompanyName}
+                />
+              );
+            })}
           </div>
         </section>
       )}
@@ -176,16 +103,13 @@ export default async function ResumePage({ params }: { params: Promise<{ lang: s
       {resume?.education && (
         <section className="mb-8">
           <Typography variant="h4">{t.resume.education.title}</Typography>
-          <ul className="list-disc pl-6">
-            <li>
-              <strong>Udacity:</strong> Deep Learning (2018)
-            </li>
-            <li>
-              <strong>South Ural State University (SUSU):</strong> Software Engineering (2002 - 2007)
-            </li>
-          </ul>
+          <div className="flex flex-col">
+            {resume.education.items.map((place: ResumeEducationPlaceInterface, index) => (
+              <EducationPlaceComponent key={`education-place-${index}`} lang={lang} place={place} />
+            ))}
+          </div>
         </section>
       )}
-    </article>
+    </section>
   );
 }

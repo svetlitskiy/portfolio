@@ -22,7 +22,7 @@ export const themeResume = createTheme({
       // fontFamily: '"Ubuntu Mono"',
     },
     body1: {
-      fontWeight: 600,
+      fontWeight: 500,
       fontSize: '1.2rem',
       // fontFamily: '"Ubuntu Mono Regular italic"',
     },

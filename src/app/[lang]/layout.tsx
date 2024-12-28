@@ -1,7 +1,7 @@
 import './../globals.css';
 import { Navigation } from '@/components/navigation';
 import { langList } from '@/conf';
-import { LangSwitcher } from '@/components/lang-switcher';
+import { LangSwitcher } from '@/client/components/lang-switcher';
 import { ThemeToggle } from '@/client/components/theme-toggle';
 import { Footer } from '@/components/footer';
 

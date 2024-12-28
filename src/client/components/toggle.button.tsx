@@ -1,12 +1,18 @@
 'use client';
 
 import { IconButton } from '@mui/material';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { useState } from 'react';
 
-export const ToggleButton = ({ params }: { params: { lang: string; htmlElementId: string } }) => {
-  const { lang, htmlElementId } = params;
-
-  console.log('lang', lang);
+export const ToggleButton = ({
+  htmlElementId,
+  disabled = false,
+}: {
+  lang: string;
+  htmlElementId: string;
+  disabled?: boolean;
+}) => {
+  const [hidden, setHidden] = useState<boolean>(false);
 
   const toggle = () => {
     const el = window?.document?.getElementById(htmlElementId);
@@ -15,14 +21,22 @@ export const ToggleButton = ({ params }: { params: { lang: string; htmlElementId
     }
     if (el?.classList.contains('hidden')) {
       el.classList.remove('hidden');
+      setHidden(true);
     } else {
       el.classList.add('hidden');
+      setHidden(false);
     }
   };
 
   return (
-    <IconButton aria-label="expand" size="large" onClick={() => toggle()}>
-      <ArrowDownwardIcon />
+    <IconButton
+      className="w-[10px] h-[10px]"
+      disabled={disabled}
+      aria-label="expand"
+      size="large"
+      onClick={() => toggle()}
+    >
+      <ArrowForwardIosIcon className={hidden ? 'rotate-90' : ''} />
     </IconButton>
   );
 };
