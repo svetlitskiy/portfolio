@@ -20,21 +20,15 @@ export const LangSwitcher = ({ params }: { params: { lang: string } }) => {
 
   return (
     <div className="flex flex-row gap-2">
-      {lang !== 'pt' && (
-        <a className="text-2xl" href={`${basePath}/pt/${path}`} onClick={(e) => navigate(e, 'pt')}>
-          🇧🇷
-        </a>
-      )}
-      {lang !== 'en' && (
-        <a className="text-2xl" href={`${basePath}/en/${path}`} onClick={(e) => navigate(e, 'en')}>
-          🇬🇧
-        </a>
-      )}
-      {lang !== 'ru' && (
-        <a className="text-2xl" href={`${basePath}/ru/${path}`} onClick={(e) => navigate(e, 'ru')}>
-          🇷🇺
-        </a>
-      )}
+      <a className="text-2xl" href={`${basePath}/pt/${path}`} onClick={(e) => navigate(e, 'pt')}>
+        🇧🇷
+      </a>
+      <a className="text-2xl" href={`${basePath}/en/${path}`} onClick={(e) => navigate(e, 'en')}>
+        🇬🇧
+      </a>
+      <a className="text-2xl" href={`${basePath}/ru/${path}`} onClick={(e) => navigate(e, 'ru')}>
+        🇷🇺
+      </a>
     </div>
   );
 };

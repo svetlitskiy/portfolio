@@ -9,6 +9,7 @@ export async function generateStaticParams() {
 
 export default async function BlogPostPage({ params }: { params: Promise<{ lang: string }> }): Promise<JSX.Element> {
   const { lang } = await params;
+  console.log('lang', lang);
 
-  return <div>Empty page {lang}</div>;
+  return <></>; // TODO add information here
 }

@@ -28,7 +28,7 @@ export default async function LangLayout({
       </header>
       <main className="flex flex-col">{children}</main>
 
-      <footer className="print:hidden  p-4">
+      <footer className="print:hidden p-4 ">
         <Footer lang={lang} />
       </footer>
     </div>

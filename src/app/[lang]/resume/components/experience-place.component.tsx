@@ -76,7 +76,7 @@ export default function ExperiencePlaceComponent({
         </div>
 
         {isHasDetails && (
-          <div id={toggleKeyId} className="hidden pl-4">
+          <div id={toggleKeyId} className="hidden print:flex pl-4">
             <div></div>
             {place.projects && place.projects.length > 0 && (
               <div>
