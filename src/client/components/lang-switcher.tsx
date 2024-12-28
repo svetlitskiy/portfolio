@@ -8,12 +8,12 @@ export const LangSwitcher = ({ params }: { params: { lang: string } }) => {
   const router = useRouter();
   const { lang } = params;
   const path = pathname.replace(`/${lang}/`, '');
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/';
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
   const navigate = (e: MouseEvent, lang: string) => {
     e.preventDefault();
     const url = `${basePath}/${lang}/${path}`.replaceAll('//', '/');
-    const navigateToUrl = basePath === '/' ? url : `${lang}/${path}`;
+    const navigateToUrl = basePath === '' ? url : `/${lang}/${path}`;
     console.log('navigateToUrl', navigateToUrl);
     router.push(navigateToUrl);
   };
