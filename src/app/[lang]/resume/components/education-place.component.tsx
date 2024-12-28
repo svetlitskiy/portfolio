@@ -68,7 +68,7 @@ export default function EducationPlaceComponent({
         </div>
 
         {place?.description.length > 0 && (
-          <div id={toggleKeyId} className="hidden">
+          <div id={toggleKeyId} className="hidden pl-4">
             {place?.description &&
               place?.description.map((descriptionItem, i) => (
                 <Typography variant="body2" key={`exp-detail-${index}-${i}`}>

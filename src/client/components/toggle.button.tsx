@@ -29,13 +29,7 @@ export const ToggleButton = ({
   };
 
   return (
-    <IconButton
-      className="w-[10px] h-[10px]"
-      disabled={disabled}
-      aria-label="expand"
-      size="large"
-      onClick={() => toggle()}
-    >
+    <IconButton disabled={disabled} aria-label="expand" onClick={() => toggle()}>
       <ArrowForwardIosIcon className={hidden ? 'rotate-90' : ''} />
     </IconButton>
   );

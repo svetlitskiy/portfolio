@@ -26,8 +26,9 @@ export default function ExperiencePlaceComponent({
       className="flex flex-row "
     >
       <div className="flex flex-col">
-        <ToggleButton lang={lang} htmlElementId={toggleKeyId} disabled={!isHasDetails} />
-        <div className="flex-1 flex flex-row divide-x divide-gray-500">
+        {!hideCompany && <ToggleButton lang={lang} htmlElementId={toggleKeyId} disabled={!isHasDetails} />}
+
+        <div className="flex-1 flex flex-row divide-x divide-gray-500 w-[48px]">
           <div className="flex-auto"></div>
           <div className="flex-auto"></div>
         </div>
@@ -36,7 +37,7 @@ export default function ExperiencePlaceComponent({
       <div className="flex flex-col gap-3 flex-auto">
         <div className="flex flex-col">
           {!hideCompany && (
-            <div className="flex flex-col md:flex-row justify-between">
+            <div className="flex flex-col md:flex-row justify-between pt-1">
               <Typography variant="h3" itemProp="name">
                 {place.companyName}
               </Typography>
@@ -75,7 +76,7 @@ export default function ExperiencePlaceComponent({
         </div>
 
         {isHasDetails && (
-          <div id={toggleKeyId} className="hidden">
+          <div id={toggleKeyId} className="hidden pl-4">
             <div></div>
             {place.projects && place.projects.length > 0 && (
               <div>
