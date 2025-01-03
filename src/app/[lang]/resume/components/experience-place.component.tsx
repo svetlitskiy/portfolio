@@ -2,7 +2,7 @@ import { ResumeProjectInterface, ResumeWorkPlaceInterface } from '@/interfaces/r
 import { ToggleButton } from '@/client/components/toggle.button';
 import { Link, Stack, Typography } from '@mui/material';
 import NextLink from 'next/link';
-import { getI18n } from '@/i18n/i18n';
+import { getI18n, replaceTextVars } from '@/i18n/i18n';
 
 export default function ExperiencePlaceComponent({
   lang,
