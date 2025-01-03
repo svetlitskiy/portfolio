@@ -18,4 +18,4 @@ export const getI18n = (lang: string): I18nLocaleInterface => {
 };
 
 export const replaceTextVars = (string: string, object: Record<string, string>) =>
-  string.replaceAll(/\{([^}]+)\}/gi, (_, a) => a.split('.').reduce((b, c) => b?.[c], object));
+  string.replaceAll(/\{([^}]+)\}/gi, (_, a) => a.split('.').reduce((b: string, c: number) => b?.[c], object));
