@@ -9,6 +9,7 @@ export interface ResumeWorkPlaceInterface {
   link?: string;
   position: string;
   period: { start: Date; end: Date };
+  description?: string[];
   responsibilities?: string[];
   achievements?: string[];
   projects?: ResumeProjectInterface[];

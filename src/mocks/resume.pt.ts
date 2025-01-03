@@ -6,22 +6,9 @@ export const resumePt: ResumeInterface = {
   projects: 'Projetos',
   summary: {
     text: [
-      'Eu amo escrever código e criar soluções que não apenas\n' +
-        'resolvam problemas, mas também tragam valor real. Em 20 anos\n' +
-        'de trabalho, participei de diversos projetos, desde plataformas\n' +
-        'de criptografia e marketplaces de NFT até sistemas de IA. Minha\n' +
-        'principal especialização é Node.js e TypeScript, além de criação de APIs e\n' +
-        'arquitetura de microsserviços.',
-
-      'Além do back-end, também trabalho com front-end,\n' +
-        'desenvolvendo interfaces intuitivas e fáceis de usar. Isso permite\n' +
-        'criar soluções completas, onde as partes cliente e servidor\n' +
-        'interagem perfeitamente.',
-
-      'Para mim, o sucesso de um projeto não é apenas como ele funciona,\n' +
-        'mas também o quanto de valor ele agrega. Meu objetivo é\n' +
-        'sempre resolver problemas de forma eficaz, otimizando as aplicações\n' +
-        'para desempenho estável e crescimento contínuo.',
+      'Eu amo programar e criar soluções que não apenas resolvem problemas, mas também entregam valor real. Ao longo de {experienceInYears} anos de trabalho, estive envolvido em diversos projetos, desde plataformas de criptomoeda e mercados de NFT até sistemas de IA. Minha especialização principal é Node.js e TypeScript, além do desenvolvimento de APIs e arquitetura de microsserviços.',
+      'Além do desenvolvimento de backend, também trabalho em projetos de frontend, criando interfaces intuitivas e fáceis de usar. Isso me permite construir soluções completas, onde os lados do cliente e do servidor interagem de forma fluida.',
+      'Para mim, o sucesso de um projeto não se resume apenas a como ele funciona, mas também ao valor que ele proporciona. Eu meço os resultados pelo quanto o projeto ajuda a gerar receita e trazer benefícios reais. Sempre busco resolver as tarefas de forma eficiente, otimizando os aplicativos para desempenho estável e crescimento.',
     ],
   },
   education: {
@@ -71,6 +58,10 @@ export const resumePt: ResumeInterface = {
           start: new Date('2021-09-15'),
           end: new Date('2024-10-22'),
         },
+        description: [
+          'Eu estive envolvido na integração do protocolo criptográfico principal da empresa em diversas soluções, assim como na criação de produtos variados baseados nele. Participei de todo o ciclo de desenvolvimento, desde a ideação e design até a implementação, testes de carga e lançamento. Trabalhando em diferentes equipes em uma startup internacional, ajudei a transformar o protocolo em uma ferramenta prática e valiosa tanto para usuários quanto para empresas. ',
+          'Foi uma experiência fascinante que combinou a resolução de desafios complexos com a colaboração entre equipes de diferentes países.',
+        ],
         projects: [
           {
             title: 'Gerenciamento de Cluster DDC',

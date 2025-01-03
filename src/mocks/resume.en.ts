@@ -6,10 +6,8 @@ export const resumeEn: ResumeInterface = {
   projects: 'Projects',
   summary: {
     text: [
-      'I love coding and creating solutions that not only solve problems but also deliver real value. Over 20 years of work, I have been involved in various projects, from crypto platforms and NFT marketplaces to AI systems. My primary specialization is Node.js and TypeScript, as well as API development and microservices architecture.',
-
+      'I love coding and creating solutions that not only solve problems but also deliver real value. Over {experienceInYears} years of work, I have been involved in various projects, from crypto platforms and NFT marketplaces to AI systems. My primary specialization is Node.js and TypeScript, as well as API development and microservices architecture.',
       'In addition to backend development, I also work on frontend projects, creating user-friendly and intuitive interfaces. This allows me to build complete solutions where client and server sides interact seamlessly.',
-
       'For me, project success is not only about how it works but also about the value it provides. I measure results by how much the project helps generate revenue and bring real benefits. I always strive to solve tasks efficiently, optimizing applications for stable performance and growth.',
     ],
   },
@@ -60,6 +58,10 @@ export const resumeEn: ResumeInterface = {
           start: new Date('2021-09-15'),
           end: new Date('2024-10-22'),
         },
+        description: [
+          'I was involved in integrating the company’s core crypto protocol into various solutions, as well as building diverse products based on it. From ideation and design to implementation and load testing, and launch, I participated in the full development cycle. Working across different teams in an international startup, I helped transform the protocol into a practical and valuable tool for both users and businesses. ',
+          'It was a fascinating experience that combined solving complex challenges with collaborating across borders.',
+        ],
         projects: [
           {
             title: 'DDC Cluster Management',
