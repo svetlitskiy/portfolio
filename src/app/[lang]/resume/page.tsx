@@ -1,6 +1,6 @@
 import { Link, Typography } from '@mui/material';
 import { contacts, langList } from '@/conf';
-import { getI18n } from '@/i18n/i18n';
+import { getI18n, replaceTextVars } from '@/i18n/i18n';
 
 import NextLink from 'next/link';
 import { api } from '@/api/api';
@@ -71,11 +71,11 @@ export default async function ResumePage({ params }: { params: Promise<{ lang: s
       </section>
 
       {resume.summary && (
-        <section className="hidden">
+        <section className="">
           <Typography variant="h2">{t.resume.summary.title}</Typography>
           {resume.summary?.text?.map((text, i) => (
             <Typography variant="body1" itemProp="description" key={`summary-text-${i}`}>
-              {text}
+              {replaceTextVars(text, { experienceInYears: (new Date().getFullYear() - 2008).toString() })}
             </Typography>
           ))}
         </section>

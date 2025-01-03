@@ -2,7 +2,7 @@ import { ResumeProjectInterface, ResumeWorkPlaceInterface } from '@/interfaces/r
 import { ToggleButton } from '@/client/components/toggle.button';
 import { Link, Stack, Typography } from '@mui/material';
 import NextLink from 'next/link';
-import { getI18n } from '@/i18n/i18n';
+import { getI18n, replaceTextVars } from '@/i18n/i18n';
 
 export default function ExperiencePlaceComponent({
   lang,
@@ -18,13 +18,7 @@ export default function ExperiencePlaceComponent({
   const toggleKeyId = `experience-item-${index}`;
   const isHasDetails = !!place.projects?.length;
   return (
-    <article
-      key={`exp-${index}`}
-      itemProp="workExperience"
-      itemScope
-      itemType="https://schema.org/Organization"
-      className="flex flex-row "
-    >
+    <article key={`exp-${index}`} itemScope itemType="https://schema.org/JobPosting" className="flex flex-row ">
       <div className="flex flex-col">
         {!hideCompany && <ToggleButton lang={lang} htmlElementId={toggleKeyId} disabled={!isHasDetails} />}
 
@@ -37,7 +31,12 @@ export default function ExperiencePlaceComponent({
       <div className="flex flex-col gap-3 flex-auto">
         <div className="flex flex-col">
           {!hideCompany && (
-            <div className="flex flex-col md:flex-row justify-between pt-1">
+            <div
+              className="flex flex-col md:flex-row justify-between pt-1"
+              itemProp="hiringOrganization"
+              itemScope
+              itemType="https://schema.org/Organization"
+            >
               <Typography variant="h3" itemProp="name">
                 {place.companyName}
               </Typography>
@@ -77,7 +76,13 @@ export default function ExperiencePlaceComponent({
 
         {isHasDetails && (
           <div id={toggleKeyId} className="hidden print:flex pl-4">
-            <div></div>
+            {place.description &&
+              place.description?.map((text, i) => (
+                <Typography variant="body1" itemProp="description" key={`place-description-${i}`}>
+                  {text}
+                </Typography>
+              ))}
+
             {place.projects && place.projects.length > 0 && (
               <div>
                 <Typography variant="h4">{t.resume.projects.title}</Typography>
