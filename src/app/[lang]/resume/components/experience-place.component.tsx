@@ -75,7 +75,7 @@ export default function ExperiencePlaceComponent({
         </div>
 
         {isHasDetails && (
-          <div id={toggleKeyId} className="hidden print:flex pl-4">
+          <div id={toggleKeyId} className="hidden print:flex flex-col pl-4">
             {place.description &&
               place.description?.map((text, i) => (
                 <Typography variant="body1" itemProp="description" key={`place-description-${i}`}>

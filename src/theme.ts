@@ -5,6 +5,7 @@ import { createTheme, Theme } from '@mui/material/styles';
 export const theme: Theme = createTheme({
   palette: {},
   typography: {
+    fontFamily: 'monospace',
     h1: {
       color: 'var(--color-primary)', // Заголовок с основным цветом
     },

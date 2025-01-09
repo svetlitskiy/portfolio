@@ -4,7 +4,7 @@ import { createTheme } from '@mui/material';
 
 export const themeResume = createTheme({
   typography: {
-    fontFamily: '"Ubuntu Mono", monospace',
+    fontFamily: '"Ubuntu Mono"',
     h1: {
       fontSize: '3rem',
       fontWeight: 500,

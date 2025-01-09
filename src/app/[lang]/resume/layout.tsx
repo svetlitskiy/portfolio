@@ -1,6 +1,5 @@
 import { ThemeProvider } from '@mui/material';
 import themeResume from './theme-resume';
-import 'typeface-ubuntu-mono';
 
 export default async function ResumeLayout({
   children,

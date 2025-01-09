@@ -14,6 +14,12 @@ export const i18nEn: I18nLocaleInterface = {
     title: 'Portfolio',
   },
   resume: {
+    contacts: {
+      title: 'Contacts',
+      email: 'Email',
+      telegram: 'Telegram',
+      socials: 'Socials',
+    },
     title: 'Resume / CV',
     projects: {
       title: 'Projects',

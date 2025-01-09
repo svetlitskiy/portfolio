@@ -15,6 +15,12 @@ export const i18nPt: I18nLocaleInterface = {
   },
   resume: {
     title: 'Currículo / CV',
+    contacts: {
+      title: 'Contatos',
+      email: 'E-mail',
+      telegram: 'Telegram',
+      socials: 'Redes Sociais',
+    },
     projects: {
       title: 'Projetos',
     },

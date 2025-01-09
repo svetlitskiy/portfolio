@@ -15,9 +15,9 @@ export default function EducationPlaceComponent({
   return (
     <article
       key={`education-${index}`}
-      itemProp="workExperience"
       itemScope
-      itemType="https://schema.org/Organization"
+      itemProp="jobTitle"
+      itemType="https://schema.org/JobPosting"
       className="flex flex-row "
     >
       <div className="flex flex-col">
