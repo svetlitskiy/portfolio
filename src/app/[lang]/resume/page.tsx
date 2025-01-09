@@ -113,7 +113,7 @@ export default async function ResumePage({ params }: { params: Promise<{ lang: s
       {resume?.experience && (
         <section className="flex flex-col">
           <Typography variant="h2">{t.resume.experience.title}</Typography>
-          <div className="flex flex-col" itemScope itemProp="workHistory" itemType="https://schema.org/Occupation">
+          <div className="flex flex-col">
             {resume.experience.items.map((place: ResumeWorkPlaceInterface, index) => {
               const hideCompanyName = resume?.experience?.items[index - 1]?.companyName === place.companyName;
               return (

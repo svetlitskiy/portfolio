@@ -18,7 +18,13 @@ export default function ExperiencePlaceComponent({
   const toggleKeyId = `experience-item-${index}`;
   const isHasDetails = !!place.projects?.length;
   return (
-    <article key={`exp-${index}`} itemScope itemType="https://schema.org/JobPosting" className="flex flex-row ">
+    <article
+      key={`exp-${index}`}
+      itemProp="workExperience"
+      itemScope
+      itemType="https://schema.org/Occupation"
+      className="flex flex-row "
+    >
       <div className="flex flex-col">
         {!hideCompany && <ToggleButton lang={lang} htmlElementId={toggleKeyId} disabled={!isHasDetails} />}
 
@@ -49,7 +55,7 @@ export default function ExperiencePlaceComponent({
           )}
 
           <div className="flex flex-col md:flex-row justify-between">
-            <Typography variant="body1" itemProp="jobTitle">
+            <Typography variant="body1" itemProp="title">
               {place.position}
             </Typography>
             <Stack direction="row" spacing={1}>
