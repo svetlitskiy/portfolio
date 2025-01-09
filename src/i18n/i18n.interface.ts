@@ -13,6 +13,12 @@ export interface I18nLocaleInterface {
   };
   resume: {
     title: string;
+    contacts: {
+      title: string;
+      email: string;
+      telegram: string;
+      socials: string;
+    };
     projects: {
       title: string;
     };

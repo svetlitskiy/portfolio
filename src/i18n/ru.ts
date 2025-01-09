@@ -15,6 +15,12 @@ export const i18nRu: I18nLocaleInterface = {
   },
   resume: {
     title: 'Резюме',
+    contacts: {
+      title: 'Контакты',
+      email: 'Электронная почта',
+      telegram: 'Telegram',
+      socials: 'Социальные сети',
+    },
     projects: {
       title: 'Проекты',
     },
