@@ -31,7 +31,7 @@ export default async function LangLayout({
       <YcMetrica />
 
       <body className={`${ubuntuMono.className} bg-background`}>
-        <header className="flex flex-col md:flex-row items-center justify-between px-2 py-1 bg-background text-primary print:hidden">
+        <header className="flex flex-col md:flex-row items-center justify-between px-4 py-1 bg-background text-primary print:hidden">
           <Navigation params={{ lang }} />
           <ThemeToggle params={{ lang }} />
           <LangSwitcher params={{ lang }} />

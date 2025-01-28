@@ -10,6 +10,7 @@ import EducationPlaceComponent from '@/app/[lang]/resume/components/education-pl
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { PrintButton } from '@/components/print-button';
+import Image from 'next/image';
 
 export async function generateStaticParams() {
   return langList.map((lang) => ({
@@ -30,7 +31,7 @@ export default async function ResumePage({ params }: { params: Promise<{ lang: s
     >
       <header className="pb-16 md:pb-8 flex flex-col md:flex-row-reverse md:justify-between items-center gap-2">
         <div>
-          <img
+          <Image
             src={`${contacts.github.avatar}?s=200`}
             alt={t.main.name}
             width={200}

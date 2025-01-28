@@ -1,6 +1,10 @@
 import { I18nLocaleInterface } from '@/i18n/i18n.interface';
 
 export const i18nPt: I18nLocaleInterface = {
+  numbers: {
+    thousandSeparator: '.',
+    decimalSeparator: ',',
+  },
   main: {
     name: 'Aleksei Svetlitskii',
   },

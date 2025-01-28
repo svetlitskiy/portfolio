@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
   publicRuntimeConfig: {
     basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
   },
+  images: {
+    unoptimized: true,
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,

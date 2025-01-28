@@ -1,4 +1,10 @@
+export interface i18nNumberFormatInterface {
+  thousandSeparator: string;
+  decimalSeparator: string;
+}
+
 export interface I18nLocaleInterface {
+  numbers: i18nNumberFormatInterface;
   main: {
     name: string;
   };

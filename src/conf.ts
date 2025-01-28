@@ -13,3 +13,5 @@ export const contacts = {
     avatar: 'https://avatars.githubusercontent.com/u/14110674',
   },
 };
+
+export const projectUrl = 'https://svetlitskiy.github.io/portfolio/';
