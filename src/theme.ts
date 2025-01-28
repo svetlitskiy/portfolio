@@ -7,15 +7,19 @@ export const theme: Theme = createTheme({
   typography: {
     fontFamily: 'monospace',
     h1: {
+      fontSize: '1.75rem', // 28px
       color: 'var(--color-primary)', // Заголовок с основным цветом
     },
     h2: {
+      fontSize: '1.5rem', // 24px
       color: 'var(--color-secondary)', // Вторичный заголовок
     },
     body1: {
+      fontSize: '1.125rem', // 18px
       color: 'var(--color-textPrimary)', // Текст для body
     },
     body2: {
+      fontSize: '1rem', // 16px,
       color: 'var(--color-textSecondary)', // Вторичный текст
     },
   },
