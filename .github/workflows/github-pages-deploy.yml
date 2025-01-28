@@ -77,7 +77,7 @@ jobs:
       - name: 'Google Search Console'
         run: "echo 'google-site-verification: googleadc82e28f7a41859.html' > ./dist/googleadc82e28f7a41859.html"
       - name: 'Yandex Web Master'
-        run:  |
+        run: |
           echo '<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>Verification: d05a4f2db92848a2</body></html>' > ./dist/yandex_d05a4f2db92848a2.html"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
