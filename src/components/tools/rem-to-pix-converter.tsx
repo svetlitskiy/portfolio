@@ -59,22 +59,6 @@ const RemToPxConverter = ({ numberFormat }: { numberFormat: i18nNumberFormatInte
 
         return (
           <Form className="flex flex-col gap-4">
-            <div className="flex flex-row justify-center items-center gap-2">
-              <FloatNumberInput
-                label="Base Font Size"
-                value={values.base}
-                size="small"
-                variant="standard"
-                numberFormat={numberFormat}
-                className="w-[120px]"
-                minValue={0}
-                precision={2}
-                onChange={(value) => setFieldValue('base', value)}
-                onFocus={() => (activeFormElement.current = 'base')}
-                onBlur={() => (activeFormElement.current = null)}
-              />
-            </div>
-
             <div className="flex-auto flex flex-row gap-2 justify-center">
               <FloatNumberInput
                 label="REM Value"
@@ -95,6 +79,22 @@ const RemToPxConverter = ({ numberFormat }: { numberFormat: i18nNumberFormatInte
                 minValue={0}
                 onChange={(value) => setFieldValue('px', value)}
                 onFocus={() => (activeFormElement.current = 'px')}
+                onBlur={() => (activeFormElement.current = null)}
+              />
+            </div>
+
+            <div className="flex flex-row justify-center items-center gap-2">
+              <FloatNumberInput
+                label="Base Font Size"
+                value={values.base}
+                size="small"
+                variant="standard"
+                numberFormat={numberFormat}
+                minValue={0}
+                precision={2}
+                postfix={<Typography>px</Typography>}
+                onChange={(value) => setFieldValue('base', value)}
+                onFocus={() => (activeFormElement.current = 'base')}
                 onBlur={() => (activeFormElement.current = null)}
               />
             </div>
