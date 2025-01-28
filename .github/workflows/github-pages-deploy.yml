@@ -74,7 +74,7 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Generate sitemap
         run: ${{ steps.detect-package-manager.outputs.manager }} run sitemap
-      - name: "Google Search Console"
+      - name: 'Google Search Console'
         run: "echo 'google-site-verification: googleadc82e28f7a41859.html' > ./dist/googleadc82e28f7a41859.html"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

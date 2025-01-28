@@ -14,4 +14,4 @@ export const contacts = {
   },
 };
 
-export const projectUrl = 'https://svetlitskiy.github.io/portfolio/';
+export const projectUrl = 'https://svetlitskiy.github.io/portfolio';
