@@ -16,8 +16,7 @@ export default function EducationPlaceComponent({
     <article
       key={`education-${index}`}
       itemScope
-      itemProp="jobTitle"
-      itemType="https://schema.org/JobPosting"
+      itemType="https://schema.org/EducationalOccupationalProgram"
       className="flex flex-row "
     >
       <div className="flex flex-col">
@@ -31,7 +30,12 @@ export default function EducationPlaceComponent({
       <div className="flex flex-col gap-3 flex-auto">
         <div className="flex flex-col">
           <div className="flex flex-col md:flex-row justify-between">
-            <Typography variant="h3" itemProp="name">
+            <Typography
+              variant="h3"
+              itemProp="provider"
+              itemScope
+              itemType="https://schema.org/EducationalOrganization"
+            >
               {place.organization}
             </Typography>
             {place.link && (
@@ -42,7 +46,7 @@ export default function EducationPlaceComponent({
           </div>
 
           <div className="flex flex-col md:flex-row justify-between">
-            <Typography variant="body1" itemProp="jobTitle">
+            <Typography variant="body1" itemProp="name">
               {place.program}
             </Typography>
             <Stack direction="row" spacing={1}>

@@ -20,9 +20,9 @@ export default function ExperiencePlaceComponent({
   return (
     <article
       key={`exp-${index}`}
-      itemProp="workExperience"
+      itemProp="hasOccupation"
       itemScope
-      itemType="https://schema.org/Occupation"
+      itemType="https://schema.org/EmployeeRole"
       className="flex flex-row "
     >
       <div className="flex flex-col">
@@ -39,13 +39,10 @@ export default function ExperiencePlaceComponent({
           {!hideCompany && (
             <div
               className="flex flex-col md:flex-row justify-between pt-1"
-              itemProp="hiringOrganization"
-              itemScope
+              itemProp="additionalType"
               itemType="https://schema.org/Organization"
             >
-              <Typography variant="h3" itemProp="name">
-                {place.companyName}
-              </Typography>
+              <Typography variant="h3">{place.companyName}</Typography>
               {place.link && (
                 <Link href={place.link} component={NextLink}>
                   {place.link}
@@ -55,7 +52,7 @@ export default function ExperiencePlaceComponent({
           )}
 
           <div className="flex flex-col md:flex-row justify-between">
-            <Typography variant="body1" itemProp="title">
+            <Typography variant="body1" itemProp="roleName">
               {place.position}
             </Typography>
             <Stack direction="row" spacing={1}>
@@ -95,12 +92,12 @@ export default function ExperiencePlaceComponent({
                 <ul>
                   {place?.projects?.map((project: ResumeProjectInterface, index: number) => (
                     <li key={`p_${index}`} className="p-1">
-                      <article itemProp="worksFor" itemScope itemType="https://schema.org/CreativeWork">
+                      <article itemProp="subjectOf" itemScope itemType="https://schema.org/CreativeWork">
                         <Typography variant="h5" itemProp="name">
                           {project.title}
                         </Typography>{' '}
                         {project?.link && (
-                          <Link component={NextLink} href={project.link}>
+                          <Link itemProp="url" component={NextLink} href={project.link}>
                             {project.link}
                           </Link>
                         )}
