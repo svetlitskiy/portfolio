@@ -15,8 +15,9 @@ export default function EducationPlaceComponent({
   return (
     <article
       key={`education-${index}`}
+      itemProp="hasCredential"
       itemScope
-      itemType="https://schema.org/EducationalOccupationalProgram"
+      itemType="https://schema.org/EducationalOccupationalCredential"
       className="flex flex-row "
     >
       <div className="flex flex-col">
@@ -29,41 +30,37 @@ export default function EducationPlaceComponent({
 
       <div className="flex flex-col gap-3 flex-auto">
         <div className="flex flex-col">
-          <div className="flex flex-col md:flex-row justify-between">
-            <Typography
-              variant="h3"
-              itemProp="provider"
-              itemScope
-              itemType="https://schema.org/EducationalOrganization"
-            >
+          <div
+            itemProp="recognizedBy"
+            itemScope
+            itemType="https://schema.org/Organization"
+            className="flex flex-col md:flex-row justify-between"
+          >
+            <Typography variant="h3" itemProp="legalName">
               {place.organization}
             </Typography>
             {place.link && (
-              <Link href={place.link} component={NextLink}>
+              <Link itemProp="url" href={place.link} component={NextLink}>
                 {place.link}
               </Link>
             )}
           </div>
 
           <div className="flex flex-col md:flex-row justify-between">
-            <Typography variant="body1" itemProp="name">
+            <Typography itemProp="credentialCategory" variant="body1">
               {place.program}
             </Typography>
             <Stack direction="row" spacing={1}>
               <Typography
-                component="time"
                 variant="body1"
-                itemProp="startDate"
-                dateTime={place?.period?.start.toISOString().substring(0, 7)}
+                // dateTime={place?.period?.start.toISOString().substring(0, 7)}
               >
                 {place?.period?.start.toLocaleDateString(lang)}
               </Typography>
               <Typography variant="body1">—</Typography>
               <Typography
-                component="time"
                 variant="body1"
-                itemProp="endDate"
-                dateTime={place?.period?.end.toISOString().substring(0, 7)}
+                // dateTime={place?.period?.end.toISOString().substring(0, 7)}
               >
                 {place?.period?.end.toLocaleDateString(lang)}
               </Typography>
@@ -72,7 +69,7 @@ export default function EducationPlaceComponent({
         </div>
 
         {place?.description.length > 0 && (
-          <div id={toggleKeyId} className="hidden print:flex flex-col pl-4">
+          <div itemProp="competencyRequired" id={toggleKeyId} className="hidden print:flex flex-col pl-4">
             {place?.description &&
               place?.description.map((descriptionItem, i) => (
                 <Typography variant="body2" key={`exp-detail-${index}-${i}`}>

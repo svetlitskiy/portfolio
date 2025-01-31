@@ -79,20 +79,29 @@ export default function ExperiencePlaceComponent({
 
         {isHasDetails && (
           <div id={toggleKeyId} className="hidden print:flex flex-col pl-4">
-            {place.description &&
-              place.description?.map((text, i) => (
-                <Typography variant="body1" itemProp="description" key={`place-description-${i}`}>
-                  {text}
-                </Typography>
-              ))}
+            {place.description && (
+              <div itemProp="description">
+                {place.description?.map((text, i) => (
+                  <Typography variant="body1" key={`place-description-${i}`}>
+                    {text}
+                  </Typography>
+                ))}
+              </div>
+            )}
 
             {place.projects && place.projects.length > 0 && (
               <div>
                 <Typography variant="h4">{t.resume.projects.title}</Typography>
                 <ul>
                   {place?.projects?.map((project: ResumeProjectInterface, index: number) => (
-                    <li key={`p_${index}`} className="p-1">
-                      <article itemProp="subjectOf" itemScope itemType="https://schema.org/CreativeWork">
+                    <li
+                      itemProp="subjectOf"
+                      itemScope
+                      itemType="https://schema.org/CreativeWork"
+                      key={`p_${index}`}
+                      className="p-1"
+                    >
+                      <article>
                         <Typography variant="h5" itemProp="name">
                           {project.title}
                         </Typography>{' '}
