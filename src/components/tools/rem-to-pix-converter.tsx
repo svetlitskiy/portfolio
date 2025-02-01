@@ -6,7 +6,7 @@ import { Typography } from '@mui/material';
 import * as yup from 'yup';
 import { parseFloatOrZero } from '@/shared/helpers/number';
 import FloatNumberInput from '@/components/float-number-input';
-import { i18nNumberFormatInterface } from '@/i18n/i18n.interface';
+import { i18nNumberFormatInterface, i18nRemToPxConvertorFormInterface } from '@/i18n/i18n.interface';
 
 interface FormInterface {
   base: number | null;
@@ -16,7 +16,7 @@ interface FormInterface {
 
 const precision = 4;
 
-const RemToPxConverter = ({ numberFormat }: { numberFormat: i18nNumberFormatInterface }) => {
+const RemToPxConverter = ({ numberFormat, labels }: { numberFormat: i18nNumberFormatInterface, labels: i18nRemToPxConvertorFormInterface }) => {
   const initialValues: FormInterface = {
     base: 16,
     rem: null,
@@ -61,7 +61,7 @@ const RemToPxConverter = ({ numberFormat }: { numberFormat: i18nNumberFormatInte
           <Form className="flex flex-col gap-4">
             <div className="flex-auto flex flex-row gap-2 justify-center">
               <FloatNumberInput
-                label="REM Value"
+                label={labels.rem.label}
                 value={values.rem}
                 precision={precision}
                 numberFormat={numberFormat}
@@ -72,7 +72,7 @@ const RemToPxConverter = ({ numberFormat }: { numberFormat: i18nNumberFormatInte
               />
 
               <FloatNumberInput
-                label="PX Value"
+                label={labels.px.label}
                 value={values.px}
                 precision={precision}
                 numberFormat={numberFormat}
@@ -85,7 +85,7 @@ const RemToPxConverter = ({ numberFormat }: { numberFormat: i18nNumberFormatInte
 
             <div className="flex flex-row justify-center items-center gap-2">
               <FloatNumberInput
-                label="Base Font Size"
+                label={labels.base.label}
                 value={values.base}
                 size="small"
                 variant="standard"
