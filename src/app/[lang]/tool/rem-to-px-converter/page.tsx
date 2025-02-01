@@ -46,21 +46,18 @@ export default async function ToolRemToPixConverterPage({
   const { lang } = await params;
   const t = getI18n(lang);
 
-  const title = 'REM to PX Converter | Developer Tools';
-  const description =
-    'Convert REM units to PX and PX to REM effortlessly with our tool. Perfect for web developers to adjust font sizes with ease.';
   const url = `${projectUrl}/${lang}/tool/rem-to-px-converter/`;
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: title,
-    description: description,
+    name: t.tools.remToPixConverter.title,
+    description: t.tools.remToPixConverter.description,
     url: url,
     mainEntity: {
       '@type': 'WebApplication',
-      name: 'REM to PX Converter',
-      description: 'A tool to convert REM units to PX and PX to REM with customizable base font size.',
+      name: t.tools.remToPixConverter.title,
+      description: t.tools.remToPixConverter.description,
       applicationCategory: 'DeveloperTool',
       operatingSystem: 'All',
       url: url,
@@ -69,22 +66,18 @@ export default async function ToolRemToPixConverterPage({
 
   return (
     <>
-      <div className="flex flex-col items-center gap-4 p-4 text-center">
+      <section className="flex flex-col items-center gap-4 p-4 text-center">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
         <Typography variant="h1" component="h1">
-          REM to PX Converter
+          {t.tools.remToPixConverter.title}
         </Typography>
         <Typography variant="body1" component="p">
-          Easily convert REM units to PX based on your base font size.
+          {t.tools.remToPixConverter.description}
         </Typography>
 
-        <RemToPxConverter numberFormat={t.numbers} />
-
-        <Typography variant="body2" component="p" className="mt-6">
-          Tip: Adjust the base font size in your CSS to customize conversions for your project.
-        </Typography>
-      </div>
+        <RemToPxConverter labels={t.tools.remToPixConverter.form} numberFormat={t.numbers} />
+      </section>
     </>
   );
 }

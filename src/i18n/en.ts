@@ -17,6 +17,24 @@ export const i18nEn: I18nLocaleInterface = {
   portfolio: {
     title: 'Portfolio',
   },
+  tools: {
+    title: 'Tools',
+    remToPixConverter: {
+      title: 'REM to PX Converter',
+      description: 'A tool for converting REM units to PX and vice versa with a customizable base font size.',
+      form: {
+        base: {
+          label: 'Base font size',
+        },
+        px: {
+          label: 'Px',
+        },
+        rem: {
+          label: 'Rem',
+        },
+      },
+    },
+  },
   resume: {
     contacts: {
       title: 'Contacts',
