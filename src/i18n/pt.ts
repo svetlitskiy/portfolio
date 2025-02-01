@@ -21,19 +21,20 @@ export const i18nPt: I18nLocaleInterface = {
     title: 'Ferramentas',
     remToPixConverter: {
       title: 'Conversor de REM para PX',
-      description: 'Uma ferramenta para converter unidades REM em PX e vice-versa, com um tamanho de fonte base personalizável.',
+      description:
+        'Uma ferramenta para converter unidades REM em PX e vice-versa, com um tamanho de fonte base personalizável.',
       form: {
         base: {
           label: 'Tamanho da fonte base',
         },
         px: {
-          label: 'Px'
+          label: 'Px',
         },
         rem: {
-          label: 'Rem'
-        }
-      }
-    }
+          label: 'Rem',
+        },
+      },
+    },
   },
   resume: {
     title: 'Currículo / CV',

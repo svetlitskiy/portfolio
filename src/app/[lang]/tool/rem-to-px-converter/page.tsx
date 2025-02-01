@@ -77,8 +77,6 @@ export default async function ToolRemToPixConverterPage({
         </Typography>
 
         <RemToPxConverter labels={t.tools.remToPixConverter.form} numberFormat={t.numbers} />
-
-
       </section>
     </>
   );

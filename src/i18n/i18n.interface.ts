@@ -5,13 +5,13 @@ export interface i18nNumberFormatInterface {
 export interface i18nRemToPxConvertorFormInterface {
   rem: {
     label: string;
-  },
+  };
   px: {
     label: string;
-  }
+  };
   base: {
     label: string;
-  }
+  };
 }
 
 export interface I18nLocaleInterface {
@@ -33,9 +33,9 @@ export interface I18nLocaleInterface {
     remToPixConverter: {
       title: string;
       description: string;
-      form: i18nRemToPxConvertorFormInterface
-    }
-  },
+      form: i18nRemToPxConvertorFormInterface;
+    };
+  };
   resume: {
     title: string;
     contacts: {

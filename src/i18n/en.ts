@@ -27,13 +27,13 @@ export const i18nEn: I18nLocaleInterface = {
           label: 'Base font size',
         },
         px: {
-          label: 'Px'
+          label: 'Px',
         },
         rem: {
-          label: 'Rem'
-        }
-      }
-    }
+          label: 'Rem',
+        },
+      },
+    },
   },
   resume: {
     contacts: {

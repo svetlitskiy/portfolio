@@ -27,13 +27,13 @@ export const i18nRu: I18nLocaleInterface = {
           label: 'Базовый размер шрифта',
         },
         px: {
-          label: 'Px'
+          label: 'Px',
         },
         rem: {
-          label: 'Rem'
-        }
-      }
-    }
+          label: 'Rem',
+        },
+      },
+    },
   },
   resume: {
     title: 'Резюме',

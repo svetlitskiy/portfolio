@@ -16,7 +16,13 @@ interface FormInterface {
 
 const precision = 4;
 
-const RemToPxConverter = ({ numberFormat, labels }: { numberFormat: i18nNumberFormatInterface, labels: i18nRemToPxConvertorFormInterface }) => {
+const RemToPxConverter = ({
+  numberFormat,
+  labels,
+}: {
+  numberFormat: i18nNumberFormatInterface;
+  labels: i18nRemToPxConvertorFormInterface;
+}) => {
   const initialValues: FormInterface = {
     base: 16,
     rem: null,
