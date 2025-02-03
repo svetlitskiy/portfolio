@@ -16,7 +16,7 @@ export const Redirect = () => {
     if (!pathname.startsWith(`/${locale}`)) {
       router.push(`/${locale}/resume`);
     }
-  }, [router]);
+  }, [router, pathname]);
 
   return <Typography variant="body1">Detecting the language and redirecting...</Typography>;
 };

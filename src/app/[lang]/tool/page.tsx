@@ -19,7 +19,9 @@ export default async function ToolsPage({ params }: { params: Promise<{ lang: st
       <Typography variant="h1">{t.tools.title}</Typography>
       <ul>
         <li>
-          <Link component={NextLink} href={`/${lang}/tool/rem-to-px-converter`}>{t.tools.remToPixConverter.title}</Link>
+          <Link component={NextLink} href={`/${lang}/tool/rem-to-px-converter`}>
+            {t.tools.remToPixConverter.title}
+          </Link>
         </li>
       </ul>
     </div>

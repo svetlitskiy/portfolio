@@ -1,5 +1,6 @@
 import { JSX } from 'react';
 import { api } from '@/api/api';
+import Image from 'next/image';
 
 export async function generateStaticParams() {
   const pages = await api.project.list();
@@ -17,7 +18,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       {project.images.map((image, i) => (
         <div key={`pr-${project.id}-img-${image}-${i}`}>
           {image}
-          <img src={image} alt={project.title} />
+          <Image width={1200} height={800} src={image} alt={project.title} />
         </div>
       ))}
     </div>

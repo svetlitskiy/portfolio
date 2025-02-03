@@ -9,11 +9,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const { lang } = await params;
   const t: I18nLocaleInterface = getI18n(lang);
 
-  console.log('t', t.home.title);
-
-  const title = 'REM to PX Converter | Developer Tools';
-  const description =
-    'Convert REM units to PX and PX to REM effortlessly with our tool. Perfect for web developers to adjust font sizes with ease.';
+  const title = t.tools.remToPixConverter.title;
+  const description = t.tools.remToPixConverter.description;
   const url = `${projectUrl}/${lang}/tool/rem-to-px-converter/`;
 
   return {
@@ -77,8 +74,6 @@ export default async function ToolRemToPixConverterPage({
         </Typography>
 
         <RemToPxConverter labels={t.tools.remToPixConverter.form} numberFormat={t.numbers} />
-
-
       </section>
     </>
   );

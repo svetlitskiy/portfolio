@@ -112,7 +112,7 @@ const FloatNumberInput = forwardRef<HTMLInputElement, CurrencyInputProps>(
       if (value === null && internalValue.current !== null) {
         internalValue.current = null;
       }
-    }, [value]);
+    }, [value, decimalSeparator, precision, thousandSeparator]);
 
     return (
       <TextField

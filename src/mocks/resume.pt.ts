@@ -6,9 +6,9 @@ export const resumePt: ResumeInterface = {
   projects: 'Projetos',
   summary: {
     text: [
-      'Eu amo programar e criar soluções que não apenas resolvem problemas, mas também entregam valor real. Ao longo de {experienceInYears} anos de trabalho, estive envolvido em diversos projetos, desde plataformas de criptomoeda e mercados de NFT até sistemas de IA. Minha especialização principal é Node.js e TypeScript, além do desenvolvimento de APIs e arquitetura de microsserviços.',
-      'Além do desenvolvimento de backend, também trabalho em projetos de frontend, criando interfaces intuitivas e fáceis de usar. Isso me permite construir soluções completas, onde os lados do cliente e do servidor interagem de forma fluida.',
-      'Para mim, o sucesso de um projeto não se resume apenas a como ele funciona, mas também ao valor que ele proporciona. Eu meço os resultados pelo quanto o projeto ajuda a gerar receita e trazer benefícios reais. Sempre busco resolver as tarefas de forma eficiente, otimizando os aplicativos para desempenho estável e crescimento.',
+      'Sou um <b>desenvolvedor full-stack com 17 anos de experiência</b>, focado em criar <b>soluções reais para negócios</b>, e não apenas escrever código. Minha especialidade é <b>Node.js, TypeScript e arquitetura de sistemas complexos</b>. Já desenvolvi <b>plataformas de cripto, serviços SaaS, bots para Telegram, soluções de IA e sistemas corporativos</b>.',
+      'Tenho experiência tanto em backend quanto em frontend. Projeto <b>arquiteturas de microsserviços, otimizo desempenho</b>, integro sistemas de pagamento e crio <b>interfaces intuitivas</b>.',
+      'Se você precisa de um desenvolvedor que não apenas "escreve código", mas <b>entende os objetivos do negócio e torna produtos lucrativos</b>, vamos conversar.',
     ],
   },
   education: {

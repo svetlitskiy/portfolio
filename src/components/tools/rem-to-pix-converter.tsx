@@ -16,7 +16,13 @@ interface FormInterface {
 
 const precision = 4;
 
-const RemToPxConverter = ({ numberFormat, labels }: { numberFormat: i18nNumberFormatInterface, labels: i18nRemToPxConvertorFormInterface }) => {
+const RemToPxConverter = ({
+  numberFormat,
+  labels,
+}: {
+  numberFormat: i18nNumberFormatInterface;
+  labels: i18nRemToPxConvertorFormInterface;
+}) => {
   const initialValues: FormInterface = {
     base: 16,
     rem: null,
@@ -31,8 +37,8 @@ const RemToPxConverter = ({ numberFormat, labels }: { numberFormat: i18nNumberFo
 
   const activeFormElement = useRef<keyof FormInterface | null>(null);
 
-  const onSubmit = async ({ rem, px }: FormInterface): Promise<void> => {
-    console.log('values', rem, px);
+  const onSubmit = async (): Promise<void> => {
+    // do nothing
   };
 
   const HandleValueChange = (

@@ -6,9 +6,10 @@ export const resumeEn: ResumeInterface = {
   projects: 'Projects',
   summary: {
     text: [
-      'I love coding and creating solutions that not only solve problems but also deliver real value. Over {experienceInYears} years of work, I have been involved in various projects, from crypto platforms and NFT marketplaces to AI systems. My primary specialization is Node.js and TypeScript, as well as API development and microservices architecture.',
-      'In addition to backend development, I also work on frontend projects, creating user-friendly and intuitive interfaces. This allows me to build complete solutions where client and server sides interact seamlessly.',
-      'For me, project success is not only about how it works but also about the value it provides. I measure results by how much the project helps generate revenue and bring real benefits. I always strive to solve tasks efficiently, optimizing applications for stable performance and growth.',
+      'I’m a <b>full-stack developer with {experienceInYears} years of experience</b>, focused on building <b>real business solutions</b> rather than just writing code. My expertise lies in <b>Node.js, TypeScript, and complex system architecture</b>. I’ve developed <b>crypto platforms, SaaS services, Telegram bots, AI solutions, and enterprise systems</b>.',
+
+      'I’m equally skilled in both backend and frontend development. I design <b>microservice architectures, optimize performance</b>, integrate payment systems, and create <b>intuitive user interfaces.</b>',
+      'If you need a developer who doesn’t just "write code" but <b>understands business goals and makes products profitable</b>, let’s talk.',
     ],
   },
   education: {
