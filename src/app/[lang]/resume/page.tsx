@@ -30,7 +30,12 @@ export default async function ResumePage({ params }: { params: Promise<{ lang: s
       itemType="https://schema.org/Person"
       className="xl:max-w-[1280px] mx-auto p-4 gap-6 flex flex-col w-full"
     >
-      <header className="pb-16 md:pb-8 flex flex-col md:flex-row-reverse md:justify-between items-center gap-2">
+      <header
+        className="pb-16 md:pb-8 flex flex-col md:flex-row-reverse md:justify-between
+      print:pb-8 flex flex-col print:flex-row-reverse print:justify-between
+
+      items-center gap-2"
+      >
         <div>
           <Image
             src={`${contacts.github.avatar}?s=200`}
