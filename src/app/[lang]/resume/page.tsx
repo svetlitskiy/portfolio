@@ -11,6 +11,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { PrintButton } from '@/components/print-button';
 import Image from 'next/image';
+import htmlParse from 'html-react-parser';
 
 export async function generateStaticParams() {
   return langList.map((lang) => ({
@@ -53,7 +54,7 @@ export default async function ResumePage({ params }: { params: Promise<{ lang: s
             itemProp="jobTitle"
             className="uppercase bg-background text-primary invert absolute left-0 py-2 pr-4 pl-4 xl:pl-[clamp(16px,calc(8px+(100vw-1280px)/2),100vw)] print:invert-0 print:normal-case"
           >
-            Fullstack/Node.js Developer
+            {resume.position}
           </Typography>
         </div>
       </header>
@@ -105,7 +106,7 @@ export default async function ResumePage({ params }: { params: Promise<{ lang: s
           <Typography variant="h2">{t.resume.summary.title}</Typography>
           {resume.summary?.text?.map((text, i) => (
             <Typography variant="body1" itemProp="description" key={`summary-text-${i}`}>
-              {replaceTextVars(text, { experienceInYears: (new Date().getFullYear() - 2008).toString() })}
+              {htmlParse(replaceTextVars(text, { experienceInYears: (new Date().getFullYear() - 2008).toString() }))}
             </Typography>
           ))}
         </section>

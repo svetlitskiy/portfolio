@@ -37,8 +37,8 @@ const RemToPxConverter = ({
 
   const activeFormElement = useRef<keyof FormInterface | null>(null);
 
-  const onSubmit = async ({ rem, px }: FormInterface): Promise<void> => {
-    console.log('values', rem, px);
+  const onSubmit = async (): Promise<void> => {
+    // do nothing
   };
 
   const HandleValueChange = (

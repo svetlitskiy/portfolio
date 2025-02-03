@@ -14,7 +14,6 @@ export const LangSwitcher = ({ params }: { params: { lang: string } }) => {
     e.preventDefault();
     const url = `${basePath}/${lang}/${path}`.replaceAll('//', '/');
     const navigateToUrl = basePath === '' ? url : `/${lang}/${path}`;
-    console.log('navigateToUrl', navigateToUrl);
     router.push(navigateToUrl);
   };
 
