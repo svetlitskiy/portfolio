@@ -33,7 +33,7 @@ export default async function LangLayout({
       <body className={`${ubuntuMono.className} bg-background`}>
         <header className="flex flex-col md:flex-row items-center justify-between px-4 py-1 bg-background text-primary print:hidden">
           <Navigation params={{ lang }} />
-          <ThemeToggle params={{ lang }} />
+          <ThemeToggle />
           <LangSwitcher params={{ lang }} />
         </header>
         <main className="flex flex-col">{children}</main>

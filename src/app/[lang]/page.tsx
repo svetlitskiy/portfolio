@@ -7,9 +7,6 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ lang: string }> }): Promise<JSX.Element> {
-  const { lang } = await params;
-  console.log('lang', lang);
-
-  return <></>; // TODO add information here
+export default async function LangPage(): Promise<JSX.Element> {
+  return <></>;
 }
