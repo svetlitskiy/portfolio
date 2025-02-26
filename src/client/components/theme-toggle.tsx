@@ -4,11 +4,8 @@ import { Button } from '@mui/material';
 import { useSettingsStore } from '@/client/hooks/use-settings-store.hook';
 import { observer } from 'mobx-react-lite';
 
-export const ThemeToggleComponent = ({ params }: { params: { lang: string } }) => {
-  const { lang } = params;
+export const ThemeToggleComponent = () => {
   const settingsStore = useSettingsStore();
-
-  console.log('lang', lang);
 
   const toggleTheme = (isDark: boolean): void => {
     document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');

@@ -23,7 +23,24 @@ export default {
         primary: 'var(--color-textPrimary)', // Для текста
         secondary: 'var(--color-textSecondary)', // Для текста
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            h1: {
+              fontSize: '2.25rem',
+              fontWeight: 'bold',
+              marginBottom: '1rem',
+            },
+            p: {
+              fontSize: '1.125rem',
+              lineHeight: '1.75',
+              marginBottom: '1.5rem',
+            },
+            // Добавьте другие элементы по необходимости
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 } satisfies Config;
