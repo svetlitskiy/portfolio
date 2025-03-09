@@ -1,5 +1,4 @@
 import { ResumeEducationPlaceInterface } from '@/interfaces/resume.interface';
-import { ToggleButton } from '@/client/components/toggle.button';
 import { Link, Stack, Typography } from '@mui/material';
 import NextLink from 'next/link';
 
@@ -21,7 +20,7 @@ export default function EducationPlaceComponent({
       className="flex flex-row "
     >
       <div className="flex flex-col">
-        <ToggleButton lang={lang} htmlElementId={toggleKeyId} disabled={!place?.description.length} />
+        {/*<ToggleButton lang={lang} htmlElementId={toggleKeyId} disabled={!place?.description.length} />*/}
         <div className="flex-1 flex flex-row divide-x divide-gray-500">
           <div className="flex-auto"></div>
           <div className="flex-auto"></div>
