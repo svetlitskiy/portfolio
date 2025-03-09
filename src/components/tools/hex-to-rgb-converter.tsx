@@ -13,13 +13,13 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 interface FormInterface {
   hex: string | null;
   red: number | null;
-  redSlider: number | null;
+  redSlider: number;
   green: number | null;
-  greenSlider: number | null;
+  greenSlider: number;
   blue: number | null;
-  blueSlider: number | null;
+  blueSlider: number;
   opacity: number | null;
-  opacitySlider: number | null;
+  opacitySlider: number;
 }
 
 const hexColorRegex = /^#?([0-9A-Fa-f]{3,4}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$/;
@@ -60,7 +60,7 @@ const HexToRgbConverter = ({
     // do nothing
   };
 
-  const rgbaToHex = (r: number, g: number, b: number, a: number | undefined): string => {
+  const rgbaToHex = (r: number, g: number, b: number, a?: number): string => {
     const toHex = (value: number) => {
       const hex = Math.round(value).toString(16).padStart(2, '0');
       return hex.toUpperCase();
@@ -198,7 +198,7 @@ const HexToRgbConverter = ({
                 onChange={(value) => setFieldValue('hex', value.target.value)}
                 onFocus={() => (activeFormElement.current = 'hex')}
                 onBlur={() => (activeFormElement.current = null)}
-                error={errors?.hex}
+                error={!!errors?.hex}
               />
               {errors?.hex && <Typography variant="body2">{errors?.hex}</Typography>}
             </div>
@@ -208,10 +208,12 @@ const HexToRgbConverter = ({
                   className="flex flex-row items-center justify-between gap-1 p-2"
                   style={{ backgroundColor: `rgb(${values.red},${values.green},${values.blue})` }}
                 >
-                  <Typography variant="body1">{rgbaToHex(values.red, values.green, values.blue)}</Typography>
+                  <Typography variant="body1">
+                    {rgbaToHex(values.redSlider, values.greenSlider, values.blueSlider)}
+                  </Typography>
                   <IconButton
                     aria-label="copy"
-                    onClick={() => copyToClipboard(rgbaToHex(values.red, values.green, values.blue))}
+                    onClick={() => copyToClipboard(rgbaToHex(values.redSlider, values.greenSlider, values.blueSlider))}
                   >
                     <ContentCopyIcon />
                   </IconButton>
@@ -221,11 +223,15 @@ const HexToRgbConverter = ({
                   style={{ backgroundColor: `rgba(${values.red},${values.green},${values.blue},${values.opacity})` }}
                 >
                   <Typography variant="body1">
-                    {rgbaToHex(values.red, values.green, values.blue, values.opacity)}
+                    {rgbaToHex(values.redSlider, values.greenSlider, values.blueSlider, values.opacitySlider)}
                   </Typography>
                   <IconButton
                     aria-label="copy"
-                    onClick={() => copyToClipboard(rgbaToHex(values.red, values.green, values.blue, values.opacity))}
+                    onClick={() =>
+                      copyToClipboard(
+                        rgbaToHex(values.redSlider, values.greenSlider, values.blueSlider, values.opacitySlider),
+                      )
+                    }
                   >
                     <ContentCopyIcon />
                   </IconButton>
