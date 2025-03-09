@@ -2,7 +2,6 @@ import './../globals.css';
 import { Navigation } from '@/components/navigation';
 import { langList } from '@/conf';
 import { LangSwitcher } from '@/client/components/lang-switcher';
-import { ThemeToggle } from '@/client/components/theme-toggle';
 import { Footer } from '@/components/footer';
 import { Ubuntu_Mono } from 'next/font/google';
 
@@ -30,7 +29,7 @@ export default async function LangLayout({
       <body className={`${ubuntuMono.className} bg-background`}>
         <header className="flex flex-col md:flex-row items-center justify-between px-4 py-1 bg-background text-primary print:hidden">
           <Navigation params={{ lang }} />
-          <ThemeToggle />
+          {/*<ThemeToggle />*/}
           <LangSwitcher params={{ lang }} />
         </header>
         <main className="flex flex-col">{children}</main>
