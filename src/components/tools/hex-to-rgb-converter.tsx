@@ -120,7 +120,7 @@ const HexToRgbConverter = ({
 
       if (activeFormElement.current === 'hex') {
         try {
-          const { r, g, b, a } = parseHexColor(hex);
+          const { r, g, b, a } = parseHexColor(hex!);
           red = r;
           redSlider = r;
           green = g;
