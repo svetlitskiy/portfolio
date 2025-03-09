@@ -2,7 +2,7 @@ import { MaskitoOptions } from '@maskito/core';
 import { maskitoNumberOptionsGenerator } from '@maskito/kit';
 import { useMaskito } from '@maskito/react';
 
-import React, { FocusEventHandler, forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
+import React, { FocusEventHandler, forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 
 import { InputAdornment, TextField } from '@mui/material';
 
@@ -50,7 +50,7 @@ const FloatNumberInput = forwardRef<HTMLInputElement, CurrencyInputProps>(
     ref,
   ) => {
     const internalRef = useRef<HTMLInputElement | null>(null);
-    const internalValue = useRef<string | null>(null);
+    const [internalValue, setInternalValue] = useState<string | null>(null);
 
     const numberMask: MaskitoOptions = maskitoNumberOptionsGenerator({
       precision: precision,
@@ -66,7 +66,7 @@ const FloatNumberInput = forwardRef<HTMLInputElement, CurrencyInputProps>(
         preprocessors: [
           (data) => {
             if (!editable) {
-              return { ...data, elementState: { ...data.elementState, value: internalValue.current! } };
+              return { ...data, elementState: { ...data.elementState, value: internalValue! } };
             }
 
             updateValue(data.elementState.value);
@@ -80,7 +80,7 @@ const FloatNumberInput = forwardRef<HTMLInputElement, CurrencyInputProps>(
     const updateValue = (val: string) => {
       if (val === '') {
         onChange?.(null);
-        internalValue.current = null;
+        setInternalValue(null);
         return;
       }
       let numberValue: number;
@@ -88,7 +88,7 @@ const FloatNumberInput = forwardRef<HTMLInputElement, CurrencyInputProps>(
         numberValue = fromAppNumberFormat(val, thousandSeparator, decimalSeparator);
         if (value === null || numberValue !== value) {
           onChange?.(numberValue);
-          internalValue.current = val;
+          setInternalValue(val);
         }
       } catch (error) {
         console.warn(error);
@@ -100,17 +100,16 @@ const FloatNumberInput = forwardRef<HTMLInputElement, CurrencyInputProps>(
     useEffect(() => {
       if (typeof value === 'number') {
         const val1 = value;
-        const val2 = internalValue.current
-          ? fromAppNumberFormat(internalValue.current, thousandSeparator, decimalSeparator)
-          : 0;
+        const val2 = internalValue ? fromAppNumberFormat(internalValue, thousandSeparator, decimalSeparator) : 0;
         if (val1 !== val2) {
-          internalValue.current = toAppNumberFormat(val1, thousandSeparator, decimalSeparator, precision);
-        } else if (val1 === 0 && !internalValue.current) {
-          internalValue.current = toAppNumberFormat(val1, thousandSeparator, decimalSeparator, precision);
+          setInternalValue(toAppNumberFormat(val1, thousandSeparator, decimalSeparator, precision));
+        } else if (val1 === 0 && !internalValue) {
+          setInternalValue(toAppNumberFormat(val1, thousandSeparator, decimalSeparator, precision));
         }
       }
-      if (value === null && internalValue.current !== null) {
-        internalValue.current = null;
+
+      if (value === null && internalValue !== null) {
+        setInternalValue(null);
       }
     }, [value, decimalSeparator, precision, thousandSeparator]);
 
@@ -122,7 +121,7 @@ const FloatNumberInput = forwardRef<HTMLInputElement, CurrencyInputProps>(
           maskitoRef(e);
           internalRef.current = e;
         }}
-        value={stringOrEmpty(internalValue.current)}
+        value={stringOrEmpty(internalValue)}
         onFocus={onFocus}
         onBlur={onBlur}
         helperText={helperText}

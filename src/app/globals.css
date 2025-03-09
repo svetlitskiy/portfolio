@@ -2,3 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.MuiSlider-thumb input {
+  -webkit-appearance: slider-vertical;
+}

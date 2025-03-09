@@ -21,7 +21,8 @@ export const i18nEn: I18nLocaleInterface = {
     title: 'Tools',
     remToPixConverter: {
       title: 'REM to PX Converter',
-      description: 'A tool for converting REM units to PX and vice versa with a customizable base font size.',
+      description:
+        'Free online tool to convert REM to PX and vice versa. Customize the base font size for precise results!',
       form: {
         base: {
           label: 'Base font size',
@@ -31,6 +32,27 @@ export const i18nEn: I18nLocaleInterface = {
         },
         rem: {
           label: 'Rem',
+        },
+      },
+    },
+    hexToRgbConverter: {
+      title: 'HEX to RGB Converter',
+      description: 'Free online tool to convert color from HEX to RGB and vice versa',
+      form: {
+        hex: {
+          label: 'HEX Color',
+        },
+        red: {
+          label: 'Red',
+        },
+        green: {
+          label: 'Green',
+        },
+        blue: {
+          label: 'Blue',
+        },
+        opacity: {
+          label: 'Opacity',
         },
       },
     },

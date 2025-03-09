@@ -1,16 +1,17 @@
 import React, { JSX } from 'react';
 import { getI18n } from '@/i18n/i18n';
 import { Typography } from '@mui/material';
-import RemToPxConverter from '@/components/tools/rem-to-pix-converter';
+
 import { projectUrl } from '@/conf';
 import { I18nLocaleInterface } from '@/i18n/i18n.interface';
+import HexToRgbConverter from '@/components/tools/hex-to-rgb-converter';
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   const t: I18nLocaleInterface = getI18n(lang);
 
-  const title = t.tools.remToPixConverter.title;
-  const description = t.tools.remToPixConverter.description;
+  const title = t.tools.hexToRgbConverter.title;
+  const description = t.tools.hexToRgbConverter.description;
   const url = `${projectUrl}/${lang}/tool/rem-to-px-converter/`;
 
   return {
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   };
 }
 
-export default async function ToolRemToPixConverterPage({
+export default async function ToolHexToRgbConverterPage({
   params,
 }: {
   params: Promise<{ lang: string }>;
@@ -43,18 +44,18 @@ export default async function ToolRemToPixConverterPage({
   const { lang } = await params;
   const t = getI18n(lang);
 
-  const url = `${projectUrl}/${lang}/tool/rem-to-px-converter/`;
+  const url = `${projectUrl}/${lang}/tool/hex-to-rgb-converter/`;
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: t.tools.remToPixConverter.title,
-    description: t.tools.remToPixConverter.description,
+    name: t.tools.hexToRgbConverter.title,
+    description: t.tools.hexToRgbConverter.description,
     url: url,
     mainEntity: {
       '@type': 'WebApplication',
-      name: t.tools.remToPixConverter.title,
-      description: t.tools.remToPixConverter.description,
+      name: t.tools.hexToRgbConverter.title,
+      description: t.tools.hexToRgbConverter.description,
       applicationCategory: 'DeveloperTool',
       operatingSystem: 'All',
       url: url,
@@ -67,13 +68,13 @@ export default async function ToolRemToPixConverterPage({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
         <Typography variant="h1" component="h1">
-          {t.tools.remToPixConverter.title}
+          {t.tools.hexToRgbConverter.title}
         </Typography>
         <Typography variant="body1" component="h2">
-          {t.tools.remToPixConverter.description}
+          {t.tools.hexToRgbConverter.description}
         </Typography>
 
-        <RemToPxConverter labels={t.tools.remToPixConverter.form} numberFormat={t.numbers} />
+        <HexToRgbConverter labels={t.tools.hexToRgbConverter.form} numberFormat={t.numbers} />
       </section>
     </>
   );

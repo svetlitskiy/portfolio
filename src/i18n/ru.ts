@@ -34,6 +34,27 @@ export const i18nRu: I18nLocaleInterface = {
         },
       },
     },
+    hexToRgbConverter: {
+      title: 'Конвертер HEX в RGB',
+      description: 'Инструмент для преобразования цвета из HEX в RGB и обратно',
+      form: {
+        hex: {
+          label: 'HEX цвет',
+        },
+        red: {
+          label: 'Красный',
+        },
+        green: {
+          label: 'Зелёный',
+        },
+        blue: {
+          label: 'Синий',
+        },
+        opacity: {
+          label: 'Прозрачность',
+        },
+      },
+    },
   },
   resume: {
     title: 'Резюме',

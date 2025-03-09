@@ -35,6 +35,27 @@ export const i18nPt: I18nLocaleInterface = {
         },
       },
     },
+    hexToRgbConverter: {
+      title: 'Conversor de HEX para RGB',
+      description: 'Ferramenta online gratuita para converter cores de HEX para RGB e vice-versa',
+      form: {
+        hex: {
+          label: 'Cor HEX',
+        },
+        red: {
+          label: 'Vermelho',
+        },
+        green: {
+          label: 'Verde',
+        },
+        blue: {
+          label: 'Azul',
+        },
+        opacity: {
+          label: 'Opacidade',
+        },
+      },
+    },
   },
   resume: {
     title: 'Currículo / CV',

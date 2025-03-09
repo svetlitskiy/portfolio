@@ -8,11 +8,11 @@ export const theme: Theme = createTheme({
     fontFamily: 'monospace',
     h1: {
       fontSize: '1.75rem', // 28px
-      color: 'var(--color-primary)', // Заголовок с основным цветом
+      color: 'var(--color-textPrimary)', // Заголовок с основным цветом
     },
     h2: {
       fontSize: '1.5rem', // 24px
-      color: 'var(--color-secondary)', // Вторичный заголовок
+      color: 'var(--color-textPrimary)', // Вторичный заголовок
     },
     body1: {
       fontSize: '1.125rem', // 18px
