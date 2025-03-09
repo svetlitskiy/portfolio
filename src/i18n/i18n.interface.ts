@@ -14,6 +14,24 @@ export interface i18nRemToPxConvertorFormInterface {
   };
 }
 
+export interface i18nHexToRGBConvertorFormInterface {
+  hex: {
+    label: string;
+  };
+  red: {
+    label: string;
+  };
+  green: {
+    label: string;
+  };
+  blue: {
+    label: string;
+  };
+  opacity: {
+    label: string;
+  };
+}
+
 export interface I18nLocaleInterface {
   numbers: i18nNumberFormatInterface;
   main: {
@@ -34,6 +52,11 @@ export interface I18nLocaleInterface {
       title: string;
       description: string;
       form: i18nRemToPxConvertorFormInterface;
+    };
+    hexToRgbConverter: {
+      title: string;
+      description: string;
+      form: i18nHexToRGBConvertorFormInterface;
     };
   };
   resume: {

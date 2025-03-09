@@ -5,7 +5,6 @@ import { LangSwitcher } from '@/client/components/lang-switcher';
 import { ThemeToggle } from '@/client/components/theme-toggle';
 import { Footer } from '@/components/footer';
 import { Ubuntu_Mono } from 'next/font/google';
-import { YcMetrica } from '@/components/yc-metrica';
 
 const ubuntuMono = Ubuntu_Mono({
   subsets: ['cyrillic', 'latin'],
@@ -28,8 +27,6 @@ export default async function LangLayout({
   const { lang } = await params;
   return (
     <html lang={lang}>
-      <YcMetrica />
-
       <body className={`${ubuntuMono.className} bg-background`}>
         <header className="flex flex-col md:flex-row items-center justify-between px-4 py-1 bg-background text-primary print:hidden">
           <Navigation params={{ lang }} />

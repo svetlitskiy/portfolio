@@ -23,6 +23,11 @@ export default async function ToolsPage({ params }: { params: Promise<{ lang: st
             {t.tools.remToPixConverter.title}
           </Link>
         </li>
+        <li>
+          <Link component={NextLink} href={`/${lang}/tool/hex-to-rgb-converter`}>
+            {t.tools.hexToRgbConverter.title}
+          </Link>
+        </li>
       </ul>
     </div>
   );
