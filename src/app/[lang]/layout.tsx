@@ -4,6 +4,7 @@ import { langList } from '@/conf';
 import { LangSwitcher } from '@/client/components/lang-switcher';
 import { Footer } from '@/components/footer';
 import { Ubuntu_Mono } from 'next/font/google';
+import { YandexMetrika } from '@/components/analytics/yandex-metrika.component';
 
 const ubuntuMono = Ubuntu_Mono({
   subsets: ['cyrillic', 'latin'],
@@ -24,9 +25,12 @@ export default async function LangLayout({
   params: Promise<{ lang: string; url: URL }>;
 }>) {
   const { lang } = await params;
+  const metrikaId = process.env.NEXT_PUBLIC_YC_METRIC;
+  
   return (
     <html lang={lang}>
       <body className={`${ubuntuMono.className} bg-background`}>
+        {metrikaId && <YandexMetrika id={metrikaId} />}
         <header className="flex flex-col md:flex-row items-center justify-between px-4 py-1 bg-background text-primary print:hidden">
           <Navigation params={{ lang }} />
           {/*<ThemeToggle />*/}
