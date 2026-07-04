@@ -12,6 +12,10 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import { PrintButton } from '@/components/print-button';
 import Image from 'next/image';
 import htmlParse from 'html-react-parser';
+import type { Metadata } from 'next';
+import { buildLanguageAlternates, buildUrl } from '@/shared/helpers/seo';
+
+const resumeSkills = ['JavaScript', 'TypeScript', 'Node.js', 'React', 'NestJS'];
 
 export async function generateStaticParams() {
   return langList.map((lang) => ({
@@ -19,10 +23,71 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const t = getI18n(lang);
+  const resume = await api.resume.get(lang);
+  const title = `${t.main.name} — ${resume.position} Resume`;
+  const description = resume.summary?.text
+    ?.map((text) =>
+      text.replace(/<[^>]+>/g, '').replace('{experienceInYears}', (new Date().getFullYear() - 2008).toString()),
+    )
+    .join(' ')
+    .slice(0, 220);
+  const url = buildUrl('/resume', lang);
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: url,
+      languages: buildLanguageAlternates('/resume'),
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: 'Aleksey Svetlitskiy',
+      locale: lang,
+      type: 'profile',
+    },
+    twitter: {
+      card: 'summary',
+      title,
+      description,
+    },
+  };
+}
+
 export default async function ResumePage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   const t = getI18n(lang);
   const resume = await api.resume.get(lang);
+  const url = buildUrl('/resume', lang);
+  const description = resume.summary?.text
+    ?.map((text) =>
+      text.replace(/<[^>]+>/g, '').replace('{experienceInYears}', (new Date().getFullYear() - 2008).toString()),
+    )
+    .join(' ');
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    name: `${t.main.name} — ${resume.position}`,
+    url,
+    inLanguage: lang,
+    mainEntity: {
+      '@type': 'Person',
+      name: t.main.name,
+      alternateName: resume.name,
+      jobTitle: resume.position,
+      description,
+      email: contacts.email,
+      image: `${contacts.github.avatar}?s=200`,
+      url,
+      sameAs: [contacts.linkedin, contacts.github.page, contacts.telegram.link],
+      knowsAbout: resumeSkills,
+    },
+  };
 
   return (
     <section
@@ -30,6 +95,8 @@ export default async function ResumePage({ params }: { params: Promise<{ lang: s
       itemType="https://schema.org/Person"
       className="xl:max-w-[1280px] mx-auto p-4 gap-6 flex flex-col w-full"
     >
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
       <header
         className="pb-16 md:pb-8 flex flex-col md:flex-row-reverse md:justify-between
       print:pb-8 flex flex-col print:flex-row-reverse print:justify-between
@@ -68,14 +135,14 @@ export default async function ResumePage({ params }: { params: Promise<{ lang: s
         <PrintButton />
       </aside>
 
-      <section className="hidden">
+      <section>
         <Typography variant="h2">Skills</Typography>
-        <ul>
-          <li itemProp="skills">JavaScript</li>
-          <li itemProp="skills">TypeScript</li>
-          <li itemProp="skills">Node.js</li>
-          <li itemProp="skills">React</li>
-          <li itemProp="skills">NestJS</li>
+        <ul className="flex flex-wrap gap-2">
+          {resumeSkills.map((skill) => (
+            <li itemProp="skills" key={skill} className="border border-current rounded px-2 py-1">
+              {skill}
+            </li>
+          ))}
         </ul>
       </section>
 
