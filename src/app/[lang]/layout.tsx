@@ -25,8 +25,8 @@ export default async function LangLayout({
   params: Promise<{ lang: string; url: URL }>;
 }>) {
   const { lang } = await params;
-  const metrikaId = process.env.NEXT_PUBLIC_YC_METRIC;
-  
+  const metrikaId = process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID ?? process.env.NEXT_PUBLIC_YC_METRIC;
+
   return (
     <html lang={lang}>
       <body className={`${ubuntuMono.className} bg-background`}>

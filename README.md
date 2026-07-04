@@ -37,6 +37,18 @@ To run this project locally, follow these steps:
 
 4. Open your browser and go to http://localhost:3000 to view the project.
 
+### Yandex Metrica
+
+Yandex Metrica is injected during the Next.js static build when a numeric counter
+ID is available in a public environment variable:
+
+- Preferred variable: `NEXT_PUBLIC_YANDEX_METRIKA_ID`
+- Backward-compatible variable: `NEXT_PUBLIC_YC_METRIC`
+
+For GitHub Pages deployments, add `NEXT_PUBLIC_YANDEX_METRIKA_ID` as a GitHub
+Actions variable in the `prod` environment used by the build job. The value
+must be only the numeric counter ID, not the full script snippet or a URL.
+
 ### Available Scripts
 
 Here are some useful commands you can use:
