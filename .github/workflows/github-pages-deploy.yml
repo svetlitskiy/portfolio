@@ -14,7 +14,7 @@ on:
 
 env:
   NEXT_PUBLIC_BASE_PATH: /portfolio
-  NEXT_PUBLIC_YC_METRIC: ${{ vars.NEXT_PUBLIC_YC_METRIC }}
+  NEXT_PUBLIC_YANDEX_METRIKA_ID: ${{ vars.NEXT_PUBLIC_YANDEX_METRIKA_ID || vars.NEXT_PUBLIC_YC_METRIC }}
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
